@@ -1,9 +1,10 @@
-import { Avatar, Drawer, List, Stack, Toolbar } from "@mui/material";
+import { Drawer, List, Stack, Toolbar } from "@mui/material";
 import colorConfigs from "../../configs/colorConfigs";
 import sizeConfigs from "../../configs/sizeConfigs";
 import SidebarElements from "./SidebarElements/SidebarElements";
 import SidebarItem from "./SidebarItem";
 import SidebarItemCollapse from "./SidebarItemCollapse";
+import Images from "../../../Images/Images";
 
 const Sidebar = () => {
   return (
@@ -22,9 +23,9 @@ const Sidebar = () => {
       }}
     >
       <List disablePadding>
-        <Toolbar sx={{ marginBottom: "20px" }}>
-          <Stack sx={{ width: "100%" }} direction="row" justifyContent="center">
-            {/* <Avatar src={assets.images.logo} /> */}
+        <Toolbar>
+          <Stack sx={{ width: "100%", marginTop: '10px', marginBottom: '10px' }} direction="row" justifyContent="center">
+            <img style={{ height: '100px', width: '50%' }} src={Images.Logo} alt="Logo" />
           </Stack>
         </Toolbar>
         {SidebarElements.map((route, index) =>
