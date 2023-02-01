@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import MainLayout from "./Components/layout/MainLayout";
-import { SidebarList } from "./Components/Common Components/Sidebar/SidebarElements";
+import MainLayout from "./components/layout/MainLayout";
+import { SidebarList } from "./components/Common Components/Sidebar/SidebarElements/GenerateRoute";
 
 function App() {
   return (

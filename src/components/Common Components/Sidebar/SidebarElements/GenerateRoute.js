@@ -2,7 +2,7 @@ import { Route } from "react-router-dom";
 import PageWrapper from "../../../layout/PageWrapper";
 import SidebarElements from "./SidebarElements";
 
-const generateRoute = routes => {
+const GenerateRoute = routes => {
   return routes.map((route, index) =>
     route.index ? (
       <Route
@@ -21,10 +21,10 @@ const generateRoute = routes => {
         }
         key={index}
       >
-        {route.child && generateRoute(route.child)}
+        {route.child && GenerateRoute(route.child)}
       </Route>
     )
   )
 }
 
-export const SidebarList = generateRoute(SidebarElements)
+export const SidebarList = GenerateRoute(SidebarElements)
