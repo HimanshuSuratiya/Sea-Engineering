@@ -1,10 +1,9 @@
-import { Avatar, Drawer, List, Stack, Toolbar } from "@mui/material"
-import assets from "../../assets"
-import colorConfigs from "../../configs/colorConfigs"
-import sizeConfigs from "../../configs/sizeConfigs"
-import appRoutes from "../../routes/appRoutes"
-import SidebarItem from "./SidebarItem"
-import SidebarItemCollapse from "./SidebarItemCollapse"
+import { Avatar, Drawer, List, Stack, Toolbar } from "@mui/material";
+import colorConfigs from "../../configs/colorConfigs";
+import sizeConfigs from "../../configs/sizeConfigs";
+import SidebarElements from "./SidebarElements/SidebarElements";
+import SidebarItem from "./SidebarItem";
+import SidebarItemCollapse from "./SidebarItemCollapse";
 
 const Sidebar = () => {
   return (
@@ -25,10 +24,10 @@ const Sidebar = () => {
       <List disablePadding>
         <Toolbar sx={{ marginBottom: "20px" }}>
           <Stack sx={{ width: "100%" }} direction="row" justifyContent="center">
-            <Avatar src={assets.images.logo} />
+            {/* <Avatar src={assets.images.logo} /> */}
           </Stack>
         </Toolbar>
-        {appRoutes.map((route, index) =>
+        {SidebarElements.map((route, index) =>
           route.sidebarProps ? (
             route.child ? (
               <SidebarItemCollapse item={route} key={index} />

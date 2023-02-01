@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom"
 import { Box, Toolbar } from "@mui/material"
-import colorConfigs from "../../configs/colorConfigs"
-import sizeConfigs from "../../configs/sizeConfigs"
-import Sidebar from "../common/Sidebar"
-import Topbar from "../common/Topbar"
+import colorConfigs from "../configs/colorConfigs"
+import sizeConfigs from "../configs/sizeConfigs"
+import Sidebar from "../Common Components/Sidebar/Sidebar"
+import Topbar from "../Common Components/Sidebar/Topbar"
 
 const MainLayout = () => {
   return (

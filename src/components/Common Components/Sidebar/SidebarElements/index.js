@@ -1,6 +1,6 @@
-import { Route } from "react-router-dom"
-import PageWrapper from "../components/layout/PageWrapper"
-import appRoutes from "./appRoutes"
+import { Route } from "react-router-dom";
+import PageWrapper from "../../../layout/PageWrapper";
+import SidebarElements from "./SidebarElements";
 
 const generateRoute = routes => {
   return routes.map((route, index) =>
@@ -27,4 +27,4 @@ const generateRoute = routes => {
   )
 }
 
-export const routes = generateRoute(appRoutes)
+export const SidebarList = generateRoute(SidebarElements)
