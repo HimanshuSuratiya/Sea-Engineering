@@ -1,13 +1,13 @@
 import React from "react";
 
-const DefaultPage = props => {
+const ContactsPage2 = props => {
   return (
     <>
       <div>
-        DefaultPage
+        ContactsPage2
       </div>
     </>
   )
 }
 
-export default DefaultPage;
+export default ContactsPage2;

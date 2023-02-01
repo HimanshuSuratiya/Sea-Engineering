@@ -1,20 +1,22 @@
-import DashboardPageLayout from "../../../pages/dashboard/DashboardPageLayout";
+import DashboardLayout from "../../../pages/Dashboard/DashboardLayout";
 import HomePage from "../../../pages/home/HomePage";
-import DefaultPage from "../../../pages/dashboard/DefaultPage";
-import DashboardIndex from "../../../pages/dashboard/DashboardIndex";
-import ChangelogPage from "../../../pages/changelog/ChangelogPage";
-import AnalyticsPage from "../../../pages/dashboard/AnalyticsPage";
-import SaasPage from "../../../pages/dashboard/SaasPage";
-import ComponentPageLayout from "../../../pages/component/ComponentPageLayout";
+import DefaultPage from "../../../pages/Dashboard/DefaultPage";
+import DashboardIndex from "../../../pages/Dashboard/DashboardIndex";
+import AnalyticsPage from "../../../pages/Dashboard/AnalyticsPage";
+import SaasPage from "../../../pages/Dashboard/SaasPage";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
-import AppsOutlinedIcon from "@mui/icons-material/AppsOutlined";
-import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
-import FormatListBulletedOutlinedIcon from "@mui/icons-material/FormatListBulletedOutlined";
-import FileDownloadOutlinedIcon from "@mui/icons-material/FileDownloadOutlined";
-import AlertPage from "../../../pages/component/AlertPage";
-import ButtonPage from "../../../pages/component/ButtonPage";
-import InstallationPage from "../../../pages/installation/InstallationPage";
-import DocumentationPage from "../../../pages/documentation/DocumentationPage";
+import ContactsPage1 from "../../../pages/Contacts/ContactsPage1";
+import ContactsPage2 from "../../../pages/Contacts/ContactsPage2";
+import ProjectsLayout from "../../../pages/Projects/ProjectsLayout";
+import ProjectsIndex from "../../../pages/Projects/ProjectsIndex";
+import ProjectsPage1 from "../../../pages/Projects/ProjectsPage1"
+import ProjectsPage2 from "../../../pages/Projects/ProjectsPage2"
+import ContactsLayout from "../../../pages/Contacts/ContactsLayout";
+import Stock from "../../../pages/Stock/Stock";
+import Equipments from "../../../pages/Equipments/Equipments";
+import Employees from "../../../pages/Employees/Employees";
+import Quotes from "../../../pages/Quotes/Quotes";
+import Invoices from "../../../pages/Invoices/Invoices";
 
 const SidebarElements = [
   {
@@ -23,20 +25,11 @@ const SidebarElements = [
     state: "home"
   },
   {
-    path: "/installation",
-    element: <InstallationPage />,
-    state: "installation",
-    sidebarProps: {
-      displayText: "Installation",
-      icon: <FileDownloadOutlinedIcon />
-    }
-  },
-  {
     path: "/dashboard",
-    element: <DashboardPageLayout />,
+    element: <DashboardLayout />,
     state: "dashboard",
     sidebarProps: {
-      displayText: "Dashboard",
+      displayText: "DASHBOARD",
       icon: <DashboardOutlinedIcon />
     },
     child: [
@@ -50,7 +43,7 @@ const SidebarElements = [
         element: <DefaultPage />,
         state: "dashboard.default",
         sidebarProps: {
-          displayText: "Default"
+          displayText: "DEFAULT"
         }
       },
       {
@@ -58,7 +51,7 @@ const SidebarElements = [
         element: <AnalyticsPage />,
         state: "dashboard.analytics",
         sidebarProps: {
-          displayText: "Analytic"
+          displayText: "ANALYTIC"
         }
       },
       {
@@ -66,56 +59,115 @@ const SidebarElements = [
         element: <SaasPage />,
         state: "dashboard.saas",
         sidebarProps: {
-          displayText: "Saas"
+          displayText: "SAAS"
         }
       }
     ]
   },
   {
-    path: "/component",
-    element: <ComponentPageLayout />,
-    state: "component",
+    path: "/projects",
+    element: <ProjectsLayout />,
+    state: "projects",
     sidebarProps: {
-      displayText: "Components",
-      icon: <AppsOutlinedIcon />
+      displayText: "PROJECTS",
+      icon: <DashboardOutlinedIcon />
     },
     child: [
       {
-        path: "/component/alert",
-        element: <AlertPage />,
-        state: "component.alert",
+        index: true,
+        element: <ProjectsIndex />,
+        state: "projects.index"
+      },
+      {
+        path: "/projects/page1",
+        element: <ProjectsPage1 />,
+        state: "projects.page1",
         sidebarProps: {
-          displayText: "Alert"
+          displayText: "PROJECT PAGE-1"
         }
       },
       {
-        path: "/component/button",
-        element: <ButtonPage />,
-        state: "component.button",
+        path: "/projects/page2",
+        element: <ProjectsPage2 />,
+        state: "projects.page2",
         sidebarProps: {
-          displayText: "Button"
+          displayText: "PROJECT PAGE-2"
+        }
+      },
+    ]
+  },
+  {
+    path: "/contacts",
+    element: <ContactsLayout />,
+    state: "contacts",
+    sidebarProps: {
+      displayText: "CONTACTS",
+      icon: <DashboardOutlinedIcon />
+    },
+    child: [
+      {
+        path: "/contacts/page1",
+        element: <ContactsPage1 />,
+        state: "contacts.page1",
+        sidebarProps: {
+          displayText: "CONTACTS PAGE-1"
+        }
+      },
+      {
+        path: "/contacts/page2",
+        element: <ContactsPage2 />,
+        state: "contacts.page2",
+        sidebarProps: {
+          displayText: "CONTACTS PAGE-2"
         }
       }
     ]
   },
   {
-    path: "/documentation",
-    element: <DocumentationPage />,
-    state: "documentation",
+    path: "/stock",
+    element: <Stock />,
+    state: "stock",
     sidebarProps: {
-      displayText: "Documentation",
-      icon: <ArticleOutlinedIcon />
+      displayText: "STOCK",
+      icon: <DashboardOutlinedIcon />
     }
   },
   {
-    path: "/changelog",
-    element: <ChangelogPage />,
-    state: "changelog",
+    path: "/equipments",
+    element: <Equipments />,
+    state: "equipments",
     sidebarProps: {
-      displayText: "Changelog",
-      icon: <FormatListBulletedOutlinedIcon />
+      displayText: "EQUIPMENTS",
+      icon: <DashboardOutlinedIcon />
     }
-  }
+  },
+  {
+    path: "/employees",
+    element: <Employees />,
+    state: "employees",
+    sidebarProps: {
+      displayText: "EMPLOYEES",
+      icon: <DashboardOutlinedIcon />
+    }
+  },
+  {
+    path: "/quotes",
+    element: <Quotes />,
+    state: "quotes",
+    sidebarProps: {
+      displayText: "QUOTES",
+      icon: <DashboardOutlinedIcon />
+    }
+  },
+  {
+    path: "/invoices",
+    element: <Invoices />,
+    state: "invoices",
+    sidebarProps: {
+      displayText: "INVOICES",
+      icon: <DashboardOutlinedIcon />
+    }
+  },
 ]
 
 export default SidebarElements;

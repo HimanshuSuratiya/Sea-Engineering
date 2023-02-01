@@ -1,7 +1,13 @@
-import React from "react"
+import React from "react";
 
 const DashboardIndex = props => {
-  return <div>DashboardIndex</div>
+  return (
+    <>
+      <div>
+        DashboardIndex
+      </div>
+    </>
+  )
 }
 
-export default DashboardIndex
+export default DashboardIndex;

@@ -1,7 +1,14 @@
-import React from "react"
+import React from "react";
 
 const SaasPage = props => {
-  return <div>SaasPage</div>
+  return (
+    <>
+      <div>
+        SaasPage
+      </div>
+    </>
+  )
+
 }
 
-export default SaasPage
+export default SaasPage;
