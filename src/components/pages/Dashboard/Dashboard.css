@@ -1,0 +1,35 @@
+.dashboard-heading {
+    color: #666666;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.dashboard-main-top-card {
+    height: 120px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.dashboard-calender-icon-div {
+    height: 50px;
+    width: 50px;
+    background-color: #deedfd;
+    border-radius: 5px;
+}
+
+.dashboard-calender-text-div {
+    height: 50px;
+    text-align: start;
+}
+
+.dashboard-Pending-Quoatations {
+    font-size: 10px;
+    color: #666666;
+    font-weight: 600;
+}
+
+.dashboard-Pending-Quoatations-value {
+    font-weight: 600;
+    font-size: 15px;
+}
