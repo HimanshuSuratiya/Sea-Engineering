@@ -45,7 +45,7 @@ const SidebarItemCollapse = ({ item }) => {
         </ListItemIcon>
         <ListItemText
           disableTypography
-          primary={<Typography>{item.sidebarProps.displayText}</Typography>}
+          primary={<Typography style={{ fontWeight: '600', fontSize: '15px' }}>{item.sidebarProps.displayText}</Typography>}
         />
         {open ? <ExpandLessOutlinedIcon /> : <ExpandMoreOutlinedIcon />}
       </ListItemButton>

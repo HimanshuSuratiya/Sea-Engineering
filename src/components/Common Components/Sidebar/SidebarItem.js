@@ -14,8 +14,8 @@ const SidebarItem = ({ item }) => {
         "&: hover": {
           backgroundColor: colorConfigs.sidebar.hoverBg
         },
-        backgroundColor:
-          appState === item.state ? colorConfigs.sidebar.activeBg : "unset",
+        color:
+          appState === item.state ? colorConfigs.sidebar.activeColor : "unset",
         paddingY: "12px",
         paddingX: "24px"
       }}

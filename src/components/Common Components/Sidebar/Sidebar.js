@@ -5,11 +5,13 @@ import SidebarElements from "./SidebarElements/SidebarElements";
 import SidebarItem from "./SidebarItem";
 import SidebarItemCollapse from "./SidebarItemCollapse";
 import Images from "../../../Images/Images";
+import "./Sidebar.css";
 
 const Sidebar = () => {
   return (
     <Drawer
       variant="permanent"
+      className="sidebar-hide-scroller"
       sx={{
         width: sizeConfigs.sidebar.width,
         flexShrink: 0,
@@ -18,7 +20,9 @@ const Sidebar = () => {
           boxSizing: "border-box",
           borderRight: "0px",
           backgroundColor: colorConfigs.sidebar.bg,
-          color: colorConfigs.sidebar.color
+          color: colorConfigs.sidebar.color,
+          fontWeight: '600',
+          fontSize: '15px'
         }
       }}
     >

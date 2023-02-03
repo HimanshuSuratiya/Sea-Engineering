@@ -1,0 +1,15 @@
+.sidebar-hide-scroller .MuiDrawer-paper::-webkit-scrollbar {
+    width: 0.1px;
+}
+
+.sidebar-hide-scroller .MuiDrawer-paper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.sidebar-hide-scroller .MuiDrawer-paper::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+.sidebar-hide-scroller .MuiDrawer-paperabc::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
