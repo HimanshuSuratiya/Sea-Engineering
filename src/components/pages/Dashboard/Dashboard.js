@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Dashboard.css";
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import Chart from "react-apexcharts";
 
 function CircularProgressWithLabel(props) {
     return (
@@ -31,6 +32,27 @@ function CircularProgressWithLabel(props) {
 
 
 const Dashboard = () => {
+    const [state, setState] = useState({
+        options: {
+            chart: {
+                id: "basic-bar"
+            },
+            xaxis: {
+                categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999]
+            }
+        },
+        series: [
+            {
+                name: "series-1",
+                data: [30, 40, 45, 50, 49, 60, 70, 91]
+            },
+            {
+                name: "series-2",
+                data: [48, 20, 75, 40, 90, 25, 55, 42]
+            }
+        ]
+    }
+    )
     return (
         <>
             <div className='px-1'>
@@ -75,6 +97,26 @@ const Dashboard = () => {
                                 <p className='p-0 m-0 dashboard-Pending-Quoatations-value'>34</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div className='container mt-3'>
+                <div className='row'>
+                    <div className='col-lg-6'>
+                        <Chart
+                            options={state.options}
+                            series={state.series}
+                            type="bar"
+                            width="500"
+                        />
+                    </div>
+                    <div className='col-lg-6'>
+                        <Chart
+                            options={state.options}
+                            series={state.series}
+                            type="line"
+                            width="500"
+                        />
                     </div>
                 </div>
             </div>
