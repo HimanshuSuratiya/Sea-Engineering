@@ -1,9 +1,3 @@
-import DashboardLayout from "../../../pages/dashboard/DashboardLayout";
-import HomePage from "../../../pages/home/HomePage";
-import DefaultPage from "../../../pages/dashboard/DefaultPage";
-import DashboardIndex from "../../../pages/dashboard/DashboardIndex";
-import AnalyticsPage from "../../../pages/dashboard/AnalyticsPage";
-import SaasPage from "../../../pages/dashboard/SaasPage";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import ContactsPage1 from "../../../pages/Contacts/ContactsPage1";
 import ContactsPage2 from "../../../pages/Contacts/ContactsPage2";
@@ -14,6 +8,7 @@ import ProjectsPage2 from "../../../pages/Projects/ProjectsPage2"
 import ContactsLayout from "../../../pages/Contacts/ContactsLayout";
 import Stock from "../../../pages/Stock/Stock";
 import Equipments from "../../../pages/Equipments/Equipments";
+import Dashboard from "../../../pages/Dashboard/Dashboard";
 import Employees from "../../../pages/Employees/Employees";
 import Quotes from "../../../pages/Quotes/Quotes";
 import Invoices from "../../../pages/Invoices/Invoices";
@@ -21,48 +16,17 @@ import Invoices from "../../../pages/Invoices/Invoices";
 const SidebarElements = [
   {
     index: true,
-    element: <HomePage />,
-    state: "home"
+    element: <Dashboard />,
+    state: "dashboard"
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: <Dashboard />,
     state: "dashboard",
     sidebarProps: {
       displayText: "DASHBOARD",
       icon: <DashboardOutlinedIcon />
-    },
-    child: [
-      {
-        index: true,
-        element: <DashboardIndex />,
-        state: "dashboard.index"
-      },
-      {
-        path: "/dashboard/default",
-        element: <DefaultPage />,
-        state: "dashboard.default",
-        sidebarProps: {
-          displayText: "DEFAULT"
-        }
-      },
-      {
-        path: "/dashboard/analytics",
-        element: <AnalyticsPage />,
-        state: "dashboard.analytics",
-        sidebarProps: {
-          displayText: "ANALYTIC"
-        }
-      },
-      {
-        path: "/dashboard/saas",
-        element: <SaasPage />,
-        state: "dashboard.saas",
-        sidebarProps: {
-          displayText: "SAAS"
-        }
-      }
-    ]
+    }
   },
   {
     path: "/projects",
