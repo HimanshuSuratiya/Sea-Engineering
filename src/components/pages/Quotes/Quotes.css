@@ -1,0 +1,26 @@
+.quotes-heading {
+    color: #262932;
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.quotes-main-top-card {
+    height: 80px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.quotes-text-div {
+    height: 65px;
+    text-align: start;
+}
+
+.quotes-text-value-bold {
+    font-weight: 600;
+    color: #2d3039;
+}
+
+.quotes-main-line-graph-div {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
