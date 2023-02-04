@@ -24,3 +24,37 @@
 .quotes-main-line-graph-div {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
+.quotes-btn {
+    color: #ffffff;
+    border: 2px solid #188dc7;
+    padding: 2px 10px;
+    font-size: 16px;
+    background: #188dc7;
+    transition: .5s;
+    border-radius: 20px;
+}
+
+.quotes-btn:hover {
+    color: black;
+    border: 2px solid #188dc7;
+    background: #8fc1e2;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border-bottom: 1px solid #eaeaea;
+    text-align: left;
+    padding: 8px;
+    font-size: 12px;
+}
+
+.quotes-three-dot-icon {
+    text-align: right !important;
+}

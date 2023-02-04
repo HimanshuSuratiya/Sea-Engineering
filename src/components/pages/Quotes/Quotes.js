@@ -4,6 +4,8 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import "./Quotes.css";
 import Chart from "react-apexcharts";
+import AddIcon from '@mui/icons-material/Add';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 function CircularProgressWithLabel(props) {
     return (
@@ -109,7 +111,7 @@ const Quotes = () => {
                     </div>
                 </div>
             </div>
-            <div className='container mt-3'>
+            <div className='container mt-5'>
                 <div className='row'>
                     <div className='col-lg-12 p-1'>
                         <div className='quotes-main-line-graph-div pe-3'>
@@ -122,6 +124,101 @@ const Quotes = () => {
                                 type="line"
                                 width="100%"
                             />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className='container mt-5'>
+                <div className='row'>
+                    <div className='col-lg-6 p-1 pe-3'>
+                        <div className='quotes-main-line-graph-div'>
+                            <div className='px-3'>
+                                <div className='py-3 d-flex align-items-center justify-content-between'>
+                                    <p className='p-0 m-0 quotes-heading'>Requests</p>
+                                    <div className='d-flex'>
+                                        <button className='me-2 quotes-btn'>View all</button>
+                                        <button className='ms-2 quotes-btn'><AddIcon /> Add New</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <table className='w-100'>
+                                        <tr>
+                                            <th>Label</th>
+                                            <th>Client</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <td>Lorem ipsum</td>
+                                            <td>MCM</td>
+                                            <td>New</td>
+                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lorem ipsum</td>
+                                            <td>Taziast</td>
+                                            <td>Treated</td>
+                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lorem ipsum</td>
+                                            <td>BP</td>
+                                            <td>Treated</td>
+                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lorem ipsum</td>
+                                            <td>Helen Bennett</td>
+                                            <td>New</td>
+                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='col-lg-6 p-1 pe-3'>
+                        <div className='quotes-main-line-graph-div'>
+                            <div className='px-3'>
+                                <div className='py-3 d-flex align-items-center justify-content-between'>
+                                    <p className='p-0 m-0 quotes-heading'>Quotes</p>
+                                    <button className='quotes-btn'>View all</button>
+                                </div>
+                                <div>
+                                    <table className='w-100'>
+                                        <tr>
+                                            <th>Label</th>
+                                            <th>Client</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <td>Lorem ipsum</td>
+                                            <td>MCM</td>
+                                            <td>New</td>
+                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lorem ipsum</td>
+                                            <td>Taziast</td>
+                                            <td>Treated</td>
+                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lorem ipsum</td>
+                                            <td>BP</td>
+                                            <td>Treated</td>
+                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lorem ipsum</td>
+                                            <td>Helen Bennett</td>
+                                            <td>New</td>
+                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
