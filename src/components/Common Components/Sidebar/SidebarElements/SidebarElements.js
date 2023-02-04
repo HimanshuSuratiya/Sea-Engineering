@@ -3,7 +3,7 @@ import ContactsPage1 from "../../../pages/Contacts/ContactsPage1";
 import ContactsPage2 from "../../../pages/Contacts/ContactsPage2";
 import ProjectsLayout from "../../../pages/Projects/ProjectsLayout";
 import ProjectsIndex from "../../../pages/Projects/ProjectsIndex";
-import ProjectsPage1 from "../../../pages/Projects/ProjectsPage1"
+import Project from "../../../pages/Projects/Project"
 import ProjectsPage2 from "../../../pages/Projects/ProjectsPage2"
 import ContactsLayout from "../../../pages/Contacts/ContactsLayout";
 import Stock from "../../../pages/Stock/Stock";
@@ -43,11 +43,11 @@ const SidebarElements = [
         state: "projects.index"
       },
       {
-        path: "/projects/page1",
-        element: <ProjectsPage1 />,
-        state: "projects.page1",
+        path: "/projects/project",
+        element: <Project />,
+        state: "projects.project",
         sidebarProps: {
-          displayText: "PROJECT PAGE-1"
+          displayText: "PROJECT"
         }
       },
       {

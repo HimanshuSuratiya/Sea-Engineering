@@ -57,7 +57,7 @@ const Topbar = () => {
                   aria-haspopup="true"
                   aria-expanded={open ? 'true' : undefined}
                 >
-                  <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+                  <Avatar sx={{ width: 32, height: 32 }} src="https://mui.com/static/images/avatar/2.jpg"></Avatar>
                 </IconButton>
               </Tooltip>
             </Box>

@@ -1,0 +1,57 @@
+.project-main-line-graph-div {
+    box-shadow: 5px 5px 5px 0px rgb(0 0 0 / 24%);
+    border-radius: 12px;
+}
+
+.project-top-left-div {
+    width: 55%;
+}
+
+.project-top-right-div {
+    width: 35%;
+}
+
+.project-fabric-heading {
+    color: #020202;
+    font-weight: 600;
+}
+
+.project-on-progress-btn {
+    background-color: #61976a;
+    height: 25px;
+    padding: 1px 10px;
+    border-radius: 15px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.project-left-div-btn {
+    background-color: #0b4b16;
+    margin: 0px 5px;
+    border: none;
+    font-size: 15px;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.task-and-date-div {
+    border: 1px solid #bcbcbc;
+    padding: 7px 60px 7px 10px;
+    border-radius: 3px;
+}
+
+.project-task-and-date-heading {
+    color: #030303;
+    padding: 0px;
+    margin: 0px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.project-task-and-date-info {
+    padding: 0px;
+    margin: 0px;
+    color: #9e9e9e;
+    font-size: 15px;
+}
