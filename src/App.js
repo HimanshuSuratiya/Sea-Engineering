@@ -4,7 +4,7 @@ import { SidebarList } from "./components/Common Components/Sidebar/SidebarEleme
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/design_website/See-engineering">
       <Routes>
         <Route path="/" element={<MainLayout />}>
           {SidebarList}
