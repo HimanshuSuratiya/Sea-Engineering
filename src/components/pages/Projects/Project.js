@@ -3,8 +3,44 @@ import "./Project.css";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`
+  };
+}
 
 const Project = props => {
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
   return (
     <>
       <div className='container'>
@@ -59,6 +95,46 @@ const Project = props => {
           </div>
         </div>
       </div>
+      <section className='project-main-line-graph-div mt-5'>
+        <div className='container'>
+          <div className=''>
+            <Box sx={{ width: '100%' }}>
+              <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                <Tabs
+                  className='main-tab'
+                  value={value}
+                  onChange={handleChange}
+                  variant="scrollable"
+                  scrollButtons
+                  allowScrollButtonsMobile
+                  aria-label="scrollable force tabs example"
+                >
+                  <Tab className="project-tabs-style" label="Overview" {...a11yProps(0)} />
+                  <Tab className="project-tabs-style" label="Tasks" {...a11yProps(1)} />
+                  <Tab className="project-tabs-style" label="Members" {...a11yProps(2)} />
+                  <Tab className="project-tabs-style" label="Spendings" {...a11yProps(3)} />
+                  <Tab className="project-tabs-style" label="Activity" {...a11yProps(4)} />
+                </Tabs>
+              </Box>
+              <TabPanel value={value} index={0}>
+                Tab-1
+              </TabPanel>
+              <TabPanel value={value} index={1}>
+                Tab-2
+              </TabPanel>
+              <TabPanel value={value} index={2}>
+                Tab-3
+              </TabPanel>
+              <TabPanel value={value} index={3}>
+                Tab-4
+              </TabPanel>
+              <TabPanel value={value} index={4}>
+                Tab-5
+              </TabPanel>
+            </Box>
+          </div>
+        </div>
+      </section>
     </>
   )
 }
