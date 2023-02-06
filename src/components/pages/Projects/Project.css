@@ -65,6 +65,22 @@
     background-color: #619866;
 }
 
+.project-btn {
+    color: #ffffff;
+    border: 2px solid #188dc7;
+    padding: 2px 10px;
+    font-size: 16px;
+    background: #188dc7;
+    transition: .5s;
+    border-radius: 20px;
+}
+
+.project-btn:hover {
+    color: black;
+    border: 2px solid #188dc7;
+    background: #8fc1e2;
+}
+
 /* Project Progress */
 .project-progress-to-do {
     border-bottom: 5px solid #6f6f6f;

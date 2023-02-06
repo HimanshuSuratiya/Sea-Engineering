@@ -7,6 +7,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import ReactApexChart from 'react-apexcharts';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -36,6 +37,44 @@ function a11yProps(index) {
 
 const Project = props => {
   const [value, setValue] = React.useState(0);
+  const [state, setState] = React.useState({
+    series: [44, 55, 41, 17],
+    options: {
+      chart: {
+        width: 380,
+        type: 'donut',
+      },
+      plotOptions: {
+        pie: {
+          startAngle: -90,
+          endAngle: 270
+        }
+      },
+      dataLabels: {
+        enabled: false
+      },
+      fill: {
+        type: 'gradient',
+      },
+      legend: {
+        formatter: function (val, opts) {
+          const Names = ['In progress', 'Completed', 'To do', 'Overdue']
+          return Names[opts.seriesIndex] + " - " + opts.w.globals.series[opts.seriesIndex]
+        }
+      },
+      responsive: [{
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }]
+    },
+  })
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -117,7 +156,29 @@ const Project = props => {
                 </Tabs>
               </Box>
               <TabPanel value={value} index={0}>
-                Tab-1
+                <div className='container'>
+                  <div className='row'>
+                    <div className='col-lg-5 px-3'>
+                      <div className='project-main-line-graph-div'>
+                        <div className='d-flex align-items-center justify-content-between p-2'>
+                          <h5 className='project-fabric-heading p-0 m-0'>Task Summary</h5>
+                          <button className='project-btn'>View all</button>
+                        </div>
+                        <div id="chart">
+                          <ReactApexChart options={state.options} series={state.series} type="donut" width={380} />
+                        </div>
+                      </div>
+                    </div>
+                    <div className='col-lg-7 px-3'>
+                      <div className='project-main-line-graph-div'>
+                        <div className='d-flex align-items-center justify-content-between p-2'>
+                          <h5 className='project-fabric-heading p-0 m-0'>Task In Progress</h5>
+                          <button className='project-btn'>View all</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </TabPanel>
               <TabPanel value={value} index={1}>
                 Tab-2
