@@ -64,3 +64,70 @@
 .main-tab .css-1aquho2-MuiTabs-indicator {
     background-color: #619866;
 }
+
+/* Project Progress */
+.project-progress-to-do {
+    border-bottom: 5px solid #6f6f6f;
+}
+
+.project-progress-in-progress {
+    border-bottom: 5px solid #0eb6fa;
+}
+
+.project-progress-completed {
+    border-bottom: 5px solid #0ec40c;
+}
+
+.project-progress-heading {
+    color: #164726;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.project-progress-main-card-div {
+    box-shadow: 5px 5px 5px 0px rgb(0 0 0 / 24%);
+    border-radius: 5px;
+}
+
+.project-progress-tag {
+    font-weight: 600;
+    color: #225a36;
+    background-color: #cdcfce;
+    width: 55px;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 12px;
+    text-align: center;
+}
+
+.project-progress-title {
+    color: #225a36;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.project-progress-text-info {
+    color: #225a36;
+    font-size: 11px;
+}
+
+.project-progress-width {
+    width: 30%;
+}
+
+.avtar-image-div div {
+    height: 30px;
+    width: 30px;
+}
+
+.project-progress-craete-task-btn {
+    background-color: #0b4b16;
+    margin: 0px 5px;
+    border: none;
+    font-size: 15px;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Project Progress */
