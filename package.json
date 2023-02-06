@@ -17,6 +17,7 @@
     "@types/react-dom": "^18.0.0",
     "apexcharts": "^3.36.3",
     "bootstrap": "^5.2.3",
+    "bootstrap-switch-button-react": "^1.2.0",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-bootstrap": "^2.1.2",
