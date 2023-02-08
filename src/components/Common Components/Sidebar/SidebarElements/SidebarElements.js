@@ -1,11 +1,9 @@
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
-import ContactsPage1 from "../../../pages/Contacts/ContactsPage1";
-import ContactsPage2 from "../../../pages/Contacts/ContactsPage2";
+import Contact from "../../../pages/Contacts/Contact";
 import ProjectsLayout from "../../../pages/Projects/ProjectsLayout";
 import ProjectsIndex from "../../../pages/Projects/ProjectsIndex";
 import Project from "../../../pages/Projects/Project"
 import ProjectProgress from "../../../pages/Projects/ProjectProgress"
-import ContactsLayout from "../../../pages/Contacts/ContactsLayout";
 import Stock from "../../../pages/Stock/Stock";
 import Equipments from "../../../pages/Equipments/Equipments";
 import Dashboard from "../../../pages/Dashboard/Dashboard";
@@ -62,30 +60,12 @@ const SidebarElements = [
   },
   {
     path: "/contacts",
-    element: <ContactsLayout />,
+    element: <Contact />,
     state: "contacts",
     sidebarProps: {
       displayText: "CONTACTS",
       icon: <DashboardOutlinedIcon />
-    },
-    child: [
-      {
-        path: "/contacts/page1",
-        element: <ContactsPage1 />,
-        state: "contacts.page1",
-        sidebarProps: {
-          displayText: "CONTACTS PAGE-1"
-        }
-      },
-      {
-        path: "/contacts/page2",
-        element: <ContactsPage2 />,
-        state: "contacts.page2",
-        sidebarProps: {
-          displayText: "CONTACTS PAGE-2"
-        }
-      }
-    ]
+    }
   },
   {
     path: "/stock",
