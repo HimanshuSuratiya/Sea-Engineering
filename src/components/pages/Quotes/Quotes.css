@@ -58,3 +58,23 @@ th {
 .quotes-three-dot-icon {
     text-align: right !important;
 }
+
+.quotes-dialog-btn {
+    color: #ffffff;
+    border: 2px solid #188dc7;
+    padding: 4px 20px;
+    font-size: 16px;
+    background: #188dc7;
+    transition: .5s;
+    border-radius: 20px;
+}
+
+.quotes-dialog-btn:hover {
+    color: black;
+    border: 2px solid #188dc7;
+    background: #8fc1e2;
+}
+
+.quotes-drop-down-options {
+    min-width: auto !important;
+}

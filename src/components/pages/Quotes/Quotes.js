@@ -6,6 +6,21 @@ import "./Quotes.css";
 import Chart from "react-apexcharts";
 import AddIcon from '@mui/icons-material/Add';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Slide from '@mui/material/Slide';
+import Divider from '@mui/material/Divider';
+import CloseIcon from '@mui/icons-material/Close';
+import { TextField } from '@mui/material';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function CircularProgressWithLabel(props) {
     return (
@@ -61,6 +76,58 @@ const Quotes = () => {
         ]
     }
     )
+    const [addRequest, setAddRequest] = useState(false);
+    const [selectOptions, setSelectOptions] = useState(null);
+
+    const openOptions = Boolean(selectOptions);
+
+    const handleClickSelectOptions = (event) => {
+        setSelectOptions(event.currentTarget);
+    };
+    const handleCloseSelectOptions = () => {
+        setSelectOptions(null);
+    };
+
+    const addRequestOpen = () => {
+        setAddRequest(true);
+    };
+
+    const addRequestClose = () => {
+        setAddRequest(false);
+    };
+
+    const handleDropDownOptions = () => {
+        return (
+            <>
+                <div>
+                    <Button
+                        className='p-0 m-0 quotes-drop-down-options'
+                        id="basic-button"
+                        aria-controls={openOptions ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={openOptions ? 'true' : undefined}
+                        onClick={handleClickSelectOptions}
+                    >
+                        <MoreVertIcon />
+                    </Button>
+                    <Menu
+                        id="basic-menu"
+                        anchorEl={selectOptions}
+                        open={openOptions}
+                        onClose={handleCloseSelectOptions}
+                        MenuListProps={{
+                            'aria-labelledby': 'basic-button',
+                        }}
+                    >
+                        <MenuItem onClick={handleCloseSelectOptions}>Profile</MenuItem>
+                        <MenuItem onClick={handleCloseSelectOptions}>My account</MenuItem>
+                        <MenuItem onClick={handleCloseSelectOptions}>Logout</MenuItem>
+                    </Menu>
+                </div>
+            </>
+        )
+    }
+
     return (
         <>
             <div className='container'>
@@ -137,7 +204,43 @@ const Quotes = () => {
                                     <p className='p-0 m-0 quotes-heading'>Requests</p>
                                     <div className='d-flex'>
                                         <button className='me-2 quotes-btn'>View all</button>
-                                        <button className='ms-2 quotes-btn'><AddIcon /> Add New</button>
+                                        <button className='ms-2 quotes-btn' onClick={addRequestOpen}><AddIcon /> Add New</button>
+                                        <div>
+                                            <Dialog
+                                                open={addRequest}
+                                                TransitionComponent={Transition}
+                                                keepMounted
+                                                onClose={addRequestClose}
+                                                aria-describedby="alert-dialog-slide-description"
+                                            >
+                                                <DialogTitle>
+                                                    <div className='d-flex align-items-center justify-content-between'>
+                                                        <p className='p-0 m-0'>New Request Quote Form</p>
+                                                        <CloseIcon onClick={addRequestClose} style={{ cursor: 'pointer' }} />
+                                                    </div>
+                                                </DialogTitle>
+                                                <Divider style={{ backgroundColor: 'gray' }} />
+                                                <DialogContent>
+                                                    <Box
+                                                        sx={{
+                                                            width: 500,
+                                                            maxWidth: '100%',
+                                                        }}
+                                                    >
+                                                        <TextField fullWidth className='my-2' label="Name" />
+                                                        <TextField fullWidth className='my-2' label="Email" />
+                                                        <TextField fullWidth className='my-2' label="Phone" />
+                                                        <TextField fullWidth className='my-2' label="Description" />
+                                                    </Box>
+                                                </DialogContent>
+                                                <DialogActions>
+                                                    <div className='px-3'>
+                                                        <button className='quotes-dialog-btn me-2' onClick={addRequestClose}>Cancel</button>
+                                                        <button className='quotes-dialog-btn' onClick={addRequestClose}>Submit</button>
+                                                    </div>
+                                                </DialogActions>
+                                            </Dialog>
+                                        </div>
                                     </div>
                                 </div>
                                 <div>
@@ -152,25 +255,25 @@ const Quotes = () => {
                                             <td>Lorem ipsum</td>
                                             <td>MCM</td>
                                             <td>New</td>
-                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
                                         </tr>
                                         <tr>
                                             <td>Lorem ipsum</td>
                                             <td>Taziast</td>
                                             <td>Treated</td>
-                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
                                         </tr>
                                         <tr>
                                             <td>Lorem ipsum</td>
                                             <td>BP</td>
                                             <td>Treated</td>
-                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
                                         </tr>
                                         <tr>
                                             <td>Lorem ipsum</td>
                                             <td>Helen Bennett</td>
                                             <td>New</td>
-                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -196,25 +299,25 @@ const Quotes = () => {
                                             <td>Lorem ipsum</td>
                                             <td>MCM</td>
                                             <td>New</td>
-                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
                                         </tr>
                                         <tr>
                                             <td>Lorem ipsum</td>
                                             <td>Taziast</td>
                                             <td>Treated</td>
-                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
                                         </tr>
                                         <tr>
                                             <td>Lorem ipsum</td>
                                             <td>BP</td>
                                             <td>Treated</td>
-                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
                                         </tr>
                                         <tr>
                                             <td>Lorem ipsum</td>
                                             <td>Helen Bennett</td>
                                             <td>New</td>
-                                            <td className="quotes-three-dot-icon"><MoreVertIcon /></td>
+                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
                                         </tr>
                                     </table>
                                 </div>
