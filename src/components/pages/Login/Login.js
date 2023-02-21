@@ -6,13 +6,11 @@ import Button from '@mui/material/Button';
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(() => ({
-
     mainTopDivArea: {
         backgroundImage: `url('https://mentoring-react.dreamguystech.com/template-1/39b4533ffb1590f627856bc7b3013d84.jpg')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
     },
-
     innerDivArea: {
         heigh: '250px',
         width: '40%',
@@ -21,17 +19,26 @@ const useStyles = makeStyles(() => ({
         border: '1px solid #4c4a4a',
         boxShadow: 'rgb(100 100 111 / 20%) 0px 7px 29px 0px',
     },
-
     textColor: {
+        color: '#009DA6',
+        color: 'rgb(117, 117, 117)'
+    },
+    seaEngineering: {
         color: '#009DA6'
     },
-
-    forgetPass: {
+    register: {
         textDecoration: 'none',
-        color: '#000',
+        color: '#009DA6',
         fontWeight: '600',
+        borderBottom: '1px dashed'
     },
-
+    forgetPass: {
+        color: '#3d3d3d',
+        display: 'inline-block',
+        fontSize: '16px',
+        marginBottom: '20px',
+        fontWeight: '600'
+    },
     LoginBtn: {
         color: '#ffffff !important',
         padding: '4px 20px',
@@ -83,13 +90,12 @@ const Login = () => {
         })
     }
 
-
     return (
         <>
             <div className={`bg-image vh-100 w-100 d-flex align-items-center justify-content-center ${classes.mainTopDivArea}`}>
                 <div className={`row p-4 ${classes.innerDivArea}`}>
                     <div className="col ">
-                        <h4>LOGIN &nbsp;<span className={`${classes.textColor}`} >SEA-ENGINEERING</span></h4>
+                        <h4>LOGIN &nbsp;<span className={`${classes.seaEngineering}`} >SEA-ENGINEERING</span></h4>
                         <p className={`fw-bold ${classes.textColor}`} >Access to our dashboard</p>
                         <TextField
                             fullWidth
@@ -113,7 +119,7 @@ const Login = () => {
                         <Button fullWidth variant="contained" className={`${classes.LoginBtn}`} onClick={handleLogin}>Login</Button>
                         <div className="mt-4 d-flex align-items-center justify-content-between">
                             <p className="text-center p-0 m-0">Don’t have an account?</p>
-                            <NavLink className={`p-0 m-0 ${classes.forgetPass}`} to="/register">Register</NavLink>
+                            <NavLink className={`p-0 m-0 ${classes.register}`} to="/register">Register</NavLink>
                         </div>
                     </div>
                 </div>

@@ -10,6 +10,9 @@ import Dashboard from "../../../pages/Dashboard/Dashboard";
 import Employees from "../../../pages/Employees/Employees";
 import Quotes from "../../../pages/Quotes/Quotes";
 import Invoices from "../../../pages/Invoices/Invoices";
+import MyProfile from "../../../pages/MyProfile/MyProfile";
+import MyAccount from "../../../pages/MyAccount/MyAccount";
+import InvoiceDetails from "../../../pages/InvoiceDetails/InvoiceDetails";
 
 const SidebarElements = [
   {
@@ -25,6 +28,21 @@ const SidebarElements = [
       displayText: "DASHBOARD",
       icon: <DashboardOutlinedIcon />
     }
+  },
+  {
+    path: "/my-profile",
+    element: <MyProfile />,
+    state: "MyProfile",
+  },
+  {
+    path: "/my-account",
+    element: <MyAccount />,
+    state: "MyAccount",
+  },
+  {
+    path: "/invoice-detail",
+    element: <InvoiceDetails />,
+    state: "InvoiceDetails",
   },
   {
     path: "/projects",

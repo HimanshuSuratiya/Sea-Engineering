@@ -130,7 +130,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
+            align={headCell.numeric ? 'center' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -318,7 +318,6 @@ const Stock = () => {
   const handleClick = (event, serial_no) => {
     const selectedIndex = selected.indexOf(serial_no);
     let newSelected = [];
-
     if (selectedIndex === -1) {
       newSelected = newSelected.concat(selected, serial_no);
     } else if (selectedIndex === 0) {
@@ -402,12 +401,12 @@ const Stock = () => {
                         >
                           {row.serial_no}
                         </TableCell>
-                        <TableCell align="right" onClick={(event) => handleClick(event, row.serial_no)}>{row.employee_name}</TableCell>
-                        <TableCell align="right" onClick={(event) => handleClick(event, row.serial_no)}>{row.email}</TableCell>
-                        <TableCell align="right" onClick={(event) => handleClick(event, row.serial_no)}>{row.salary}</TableCell>
-                        <TableCell align="right" onClick={(event) => handleClick(event, row.serial_no)}>{row.address}</TableCell>
-                        <TableCell align="right">{row.action}</TableCell>
-                        <TableCell align="right">{row.status}</TableCell>
+                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.employee_name}</TableCell>
+                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.email}</TableCell>
+                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.salary}</TableCell>
+                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.address}</TableCell>
+                        <TableCell align="center">{row.action}</TableCell>
+                        <TableCell align="center">{row.status}</TableCell>
                       </TableRow>
                     );
                   })}

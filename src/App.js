@@ -19,7 +19,6 @@ function App() {
       }
     }
     localStorage.setItem('LoginData', JSON.stringify(LoginData));
-    console.log(parseInt(localStorage.getItem('isLoginType')), 'sss')
   }, [])
 
   return (
@@ -43,4 +42,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

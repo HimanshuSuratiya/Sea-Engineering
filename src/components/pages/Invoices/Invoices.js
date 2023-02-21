@@ -21,14 +21,17 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import EditIcon from '@mui/icons-material/Edit';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import { NavLink } from 'react-router-dom';
 
-function createData(serial_no, employee_name, email, salary, address, action, status) {
+function createData(serial_no, invoice_Date, invoice_no, address, client_name, ViewDetails, action, status) {
     return {
         serial_no,
-        employee_name,
-        email,
-        salary,
+        invoice_Date,
+        invoice_no,
         address,
+        client_name,
+        ViewDetails,
         action,
         status,
     };
@@ -70,28 +73,35 @@ const headCells = [
         label: 'S-No',
     },
     {
-        id: 'employee_name',
+        id: ' invoice_Date',
         numeric: true,
         disablePadding: false,
-        label: 'Employee-Name',
+        label: ' invoice_Date',
+
     },
     {
-        id: 'email',
+        id: ' invoice_no',
         numeric: true,
         disablePadding: false,
-        label: 'Email',
-    },
-    {
-        id: 'salary',
-        numeric: true,
-        disablePadding: false,
-        label: 'Salary',
+        label: ' invoice_no',
     },
     {
         id: 'address',
         numeric: true,
         disablePadding: false,
-        label: 'Address',
+        label: 'address',
+    },
+    {
+        id: 'client_name',
+        numeric: true,
+        disablePadding: false,
+        label: 'client_name',
+    },
+    {
+        id: 'ViewDetails',
+        numeric: true,
+        disablePadding: false,
+        label: 'ViewDetails',
     },
     {
         id: 'action',
@@ -226,7 +236,7 @@ const Invoices = () => {
     const [activeInactive, setActiveInactive] = React.useState(true)
 
     const rows = [
-        createData(1, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(1, '13/02/2023', '45', "Noida sector 59", "vishal", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -235,7 +245,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(2, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(2, '14/02/2023', '46', "Noida sector 58", "shubham", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -244,7 +254,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(3, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(3, '15/02/2023', '47', "Noida sector 57", "rajesh", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -253,7 +263,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(4, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(4, '16/02/2023', '48', "Noida sector 56", "vikash", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -262,7 +272,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(5, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(5, '17/02/2023', '49', "Noida sector 55", "ankit", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -271,7 +281,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(6, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(6, '18/02/2023', '50', "Noida sector 54", "vinod", <NavLink to="/invoice-detail"><VisibilityIcon class="text-center" /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -280,7 +290,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(7, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(7, '19/02/2023', '51', "Noida sector 53", "atul", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -289,7 +299,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(8, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(8, '20/02/2023', '52', "Noida sector 52", "mukesh", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -318,7 +328,6 @@ const Invoices = () => {
     const handleClick = (event, serial_no) => {
         const selectedIndex = selected.indexOf(serial_no);
         let newSelected = [];
-
         if (selectedIndex === -1) {
             newSelected = newSelected.concat(selected, serial_no);
         } else if (selectedIndex === 0) {
@@ -402,12 +411,14 @@ const Invoices = () => {
                                                 >
                                                     {row.serial_no}
                                                 </TableCell>
-                                                <TableCell align="right" onClick={(event) => handleClick(event, row.serial_no)}>{row.employee_name}</TableCell>
-                                                <TableCell align="right" onClick={(event) => handleClick(event, row.serial_no)}>{row.email}</TableCell>
-                                                <TableCell align="right" onClick={(event) => handleClick(event, row.serial_no)}>{row.salary}</TableCell>
-                                                <TableCell align="right" onClick={(event) => handleClick(event, row.serial_no)}>{row.address}</TableCell>
-                                                <TableCell align="right">{row.action}</TableCell>
-                                                <TableCell align="right">{row.status}</TableCell>
+                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.invoice_Date}</TableCell>
+                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.invoice_no}</TableCell>
+                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.address}</TableCell>
+                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.client_name}</TableCell>
+
+                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.ViewDetails}</TableCell>
+                                                <TableCell align="center">{row.action}</TableCell>
+                                                <TableCell align="center">{row.status}</TableCell>
                                             </TableRow>
                                         );
                                     })}
