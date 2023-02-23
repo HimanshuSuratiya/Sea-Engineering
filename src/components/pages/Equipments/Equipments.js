@@ -130,7 +130,7 @@ function EnhancedTableHead(props) {
         {headCells.map((headCell) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? 'center' : 'left'}
+            align={headCell.numeric ? 'center' : 'right'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -226,7 +226,7 @@ const Equipments = props => {
   const [activeInactive, setActiveInactive] = React.useState(true)
 
   const rows = [
-    createData(1, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(1, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -235,7 +235,7 @@ const Equipments = props => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(2, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(2, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -244,7 +244,7 @@ const Equipments = props => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(3, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(3, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -253,7 +253,7 @@ const Equipments = props => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(4, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(4, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -262,7 +262,7 @@ const Equipments = props => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(5, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(5, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -271,7 +271,7 @@ const Equipments = props => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(6, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(6, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -280,7 +280,7 @@ const Equipments = props => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(7, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(7, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -289,7 +289,7 @@ const Equipments = props => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(8, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(8, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -394,6 +394,7 @@ const Equipments = props => {
                           />
                         </TableCell>
                         <TableCell
+                          align="center"
                           component="th"
                           id={labelId}
                           scope="row"

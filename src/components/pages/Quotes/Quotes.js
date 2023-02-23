@@ -99,9 +99,9 @@ const Quotes = () => {
     const handleDropDownOptions = () => {
         return (
             <>
-                <div>
+                <div >
                     <Button
-                        className='p-0 m-0 quotes-drop-down-options'
+
                         id="basic-button"
                         aria-controls={openOptions ? 'basic-menu' : undefined}
                         aria-haspopup="true"
@@ -111,6 +111,13 @@ const Quotes = () => {
                         <MoreVertIcon />
                     </Button>
                     <Menu
+                        PaperProps={{
+                            elevation: 0,
+                            sx: {
+                                border: "solid 0px gray",
+                                color: "#188dc7"
+                            }
+                        }}
                         id="basic-menu"
                         anchorEl={selectOptions}
                         open={openOptions}
@@ -119,9 +126,12 @@ const Quotes = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-                        <MenuItem onClick={handleCloseSelectOptions}>Profile</MenuItem>
+
+                        <MenuItem onClick={handleCloseSelectOptions} >Profile</MenuItem>
                         <MenuItem onClick={handleCloseSelectOptions}>My account</MenuItem>
                         <MenuItem onClick={handleCloseSelectOptions}>Logout</MenuItem>
+
+
                     </Menu>
                 </div>
             </>

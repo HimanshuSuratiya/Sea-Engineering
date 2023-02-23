@@ -13,7 +13,20 @@ import Invoices from "../../../pages/Invoices/Invoices";
 import MyProfile from "../../../pages/MyProfile/MyProfile";
 import MyAccount from "../../../pages/MyAccount/MyAccount";
 import InvoiceDetails from "../../../pages/InvoiceDetails/InvoiceDetails";
-
+import GroupsIcon from '@mui/icons-material/Groups';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import ConstructionIcon from '@mui/icons-material/Construction';
+import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import Notification from "../../../pages/Notification/Notification";
+import TaskIcon from '@mui/icons-material/Task';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import Task from "../../../pages/Task/Task";
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import Client_Contact from "../../../pages/Client_Contact/Client_Contact";
 const SidebarElements = [
   {
     index: true,
@@ -26,7 +39,7 @@ const SidebarElements = [
     state: "dashboard",
     sidebarProps: {
       displayText: "DASHBOARD",
-      icon: <DashboardOutlinedIcon />
+      icon: <DashboardIcon />
     }
   },
   {
@@ -50,7 +63,7 @@ const SidebarElements = [
     state: "projects",
     sidebarProps: {
       displayText: "PROJECTS",
-      icon: <DashboardOutlinedIcon />
+      icon: <WorkspacePremiumIcon />
     },
     child: [
       {
@@ -82,7 +95,7 @@ const SidebarElements = [
     state: "contacts",
     sidebarProps: {
       displayText: "CONTACTS",
-      icon: <DashboardOutlinedIcon />
+      icon: <ContactsIcon />
     }
   },
   {
@@ -91,7 +104,7 @@ const SidebarElements = [
     state: "stock",
     sidebarProps: {
       displayText: "STOCK",
-      icon: <DashboardOutlinedIcon />
+      icon: <ShowChartIcon />
     }
   },
   {
@@ -100,7 +113,7 @@ const SidebarElements = [
     state: "equipments",
     sidebarProps: {
       displayText: "EQUIPMENTS",
-      icon: <DashboardOutlinedIcon />
+      icon: <ConstructionIcon />
     }
   },
   {
@@ -109,7 +122,7 @@ const SidebarElements = [
     state: "employees",
     sidebarProps: {
       displayText: "EMPLOYEES",
-      icon: <DashboardOutlinedIcon />
+      icon: <GroupsIcon />
     }
   },
   {
@@ -118,7 +131,7 @@ const SidebarElements = [
     state: "quotes",
     sidebarProps: {
       displayText: "QUOTES",
-      icon: <DashboardOutlinedIcon />
+      icon: <FormatQuoteIcon />
     }
   },
   {
@@ -127,9 +140,37 @@ const SidebarElements = [
     state: "invoices",
     sidebarProps: {
       displayText: "INVOICES",
-      icon: <DashboardOutlinedIcon />
+      icon: <ReceiptIcon />
     }
   },
+  {
+    path: "/notification",
+    element: <Notification />,
+    state: "notification",
+    sidebarProps: {
+      displayText: "NOTIFICATION",
+      icon: <NotificationsActiveIcon />
+    }
+  },
+  {
+    path: "/task",
+    element: <Task />,
+    state: "task",
+    sidebarProps: {
+      displayText: "TASK",
+      icon: <TaskIcon />
+    }
+  },
+  {
+    path: "/Client_Contact",
+    element: <Client_Contact />,
+    state: "Client_Contact",
+    sidebarProps: {
+      displayText: "Client and Contact",
+      icon: <PeopleAltIcon />
+    }
+  },
+
 ]
 
 export default SidebarElements;

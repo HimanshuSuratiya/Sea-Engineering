@@ -1,7 +1,6 @@
 import React from "react";
 import TextField from '@mui/material/TextField';
 import { makeStyles } from "@material-ui/core/styles";
-
 const useStyles = makeStyles(() => ({
     mainTopDivArea: {
         backgroundImage: `url('https://mentoring-react.dreamguystech.com/template-1/39b4533ffb1590f627856bc7b3013d84.jpg')`,

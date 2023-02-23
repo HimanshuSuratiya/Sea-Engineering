@@ -21,8 +21,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import EditIcon from '@mui/icons-material/Edit';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
-import FilterAltIcon from '@mui/icons-material/FilterAlt';
-import AddIcon from '@mui/icons-material/Add';
+
 function createData(serial_no, employee_name, email, salary, address, action, status) {
     return {
         serial_no,
@@ -193,7 +192,7 @@ function EnhancedTableToolbar(props) {
                     id="tableTitle"
                     component="div"
                 >
-                    Employees
+                    Client_Contact
                 </Typography>
             )}
             {numSelected > 0 ? (
@@ -202,9 +201,12 @@ function EnhancedTableToolbar(props) {
                         <DeleteIcon />
                     </IconButton>
                 </Tooltip>
-            ) : (<>
-                <label>Search:</label>  <input type="text" className="searchTerm-input" />
-            </>
+            ) : (
+                <Tooltip title="Filter list">
+                    <IconButton>
+                        <FilterListIcon />
+                    </IconButton>
+                </Tooltip>
             )}
         </Toolbar>
     );
@@ -214,7 +216,7 @@ EnhancedTableToolbar.propTypes = {
     numSelected: PropTypes.number.isRequired,
 };
 
-const Employees = () => {
+const Client_Contact = () => {
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('calories');
     const [selected, setSelected] = React.useState([]);
@@ -349,114 +351,92 @@ const Employees = () => {
 
     return (
         <>
+            <Box sx={{ width: '100%' }}>
+                <Paper sx={{ width: '100%', mb: 2 }}>
+                    <EnhancedTableToolbar numSelected={selected.length} />
+                    <TableContainer>
+                        <Table
+                            sx={{ minWidth: 750 }}
+                            aria-labelledby="tableTitle"
+                            size={dense ? 'small' : 'medium'}
+                        >
+                            <EnhancedTableHead
+                                numSelected={selected.length}
+                                order={order}
+                                orderBy={orderBy}
+                                onSelectAllClick={handleSelectAllClick}
+                                onRequestSort={handleRequestSort}
+                                rowCount={rows.length}
+                            />
+                            <TableBody>
+                                {stableSort(rows, getComparator(order, orderBy))
+                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    .map((row, index) => {
+                                        const isItemSelected = isSelected(row.serial_no);
+                                        const labelId = `enhanced-table-checkbox-${index}`;
 
-
-            <div className="container">
-                <div className="row">
-                    <div className="col-12">
-                        <h5 className='text-white bg-success py-3 px-3'>Select Employee Change to</h5>
-                    </div>
-                    <div className="col-12 text-end  mb-2">
-                        <button type="button" class="btn btn-secondary  mx-2"><AddIcon />Add Stock</button>
-                        <button type="button" class="btn btn-secondary"><FilterAltIcon />Filter </button>
-                    </div>
-                    <div classname="container">
-
-                        <div className="row">
-                            <div className="col-12">
-                                <Box sx={{ width: '100%' }}>
-                                    <Paper sx={{ width: '100%', mb: 2 }}>
-                                        <EnhancedTableToolbar numSelected={selected.length} />
-                                        <TableContainer>
-                                            <Table
-                                                sx={{ minWidth: 750 }}
-                                                aria-labelledby="tableTitle"
-                                                size={dense ? 'small' : 'medium'}
+                                        return (
+                                            <TableRow
+                                                hover
+                                                role="checkbox"
+                                                aria-checked={isItemSelected}
+                                                tabIndex={-1}
+                                                key={row.serial_no}
+                                                selected={isItemSelected}
                                             >
-                                                <EnhancedTableHead
-                                                    numSelected={selected.length}
-                                                    order={order}
-                                                    orderBy={orderBy}
-                                                    onSelectAllClick={handleSelectAllClick}
-                                                    onRequestSort={handleRequestSort}
-                                                    rowCount={rows.length}
-                                                />
-                                                <TableBody>
-                                                    {stableSort(rows, getComparator(order, orderBy))
-                                                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                                        .map((row, index) => {
-                                                            const isItemSelected = isSelected(row.serial_no);
-                                                            const labelId = `enhanced-table-checkbox-${index}`;
+                                                <TableCell padding="checkbox" onClick={(event) => handleClick(event, row.serial_no)}>
+                                                    <Checkbox
+                                                        color="primary"
+                                                        checked={isItemSelected}
+                                                        inputProps={{
+                                                            'aria-labelledby': labelId,
+                                                        }}
+                                                    />
+                                                </TableCell>
+                                                <TableCell align="center"
+                                                    component="th"
+                                                    id={labelId}
+                                                    scope="row"
+                                                    padding="none"
+                                                    onClick={(event) => handleClick(event, row.serial_no)}
+                                                >
+                                                    {row.serial_no}
+                                                </TableCell>
 
-                                                            return (
-                                                                <TableRow
-                                                                    hover
-                                                                    role="checkbox"
-                                                                    aria-checked={isItemSelected}
-                                                                    tabIndex={-1}
-                                                                    key={row.serial_no}
-                                                                    selected={isItemSelected}
-                                                                >
-                                                                    <TableCell padding="checkbox" onClick={(event) => handleClick(event, row.serial_no)}>
-                                                                        <Checkbox
-                                                                            color="primary"
-                                                                            checked={isItemSelected}
-                                                                            inputProps={{
-                                                                                'aria-labelledby': labelId,
-                                                                            }}
-                                                                        />
-                                                                    </TableCell>
-                                                                    <TableCell align="center"
-                                                                        component="th"
-                                                                        id={labelId}
-                                                                        scope="row"
-                                                                        padding="none"
-                                                                        onClick={(event) => handleClick(event, row.serial_no)}
-                                                                    >
-                                                                        {row.serial_no}
-                                                                    </TableCell>
-
-                                                                    <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.employee_name}</TableCell>
-                                                                    <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.email}</TableCell>
-                                                                    <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.salary}</TableCell>
-                                                                    <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.address}</TableCell>
-                                                                    <TableCell align="center">{row.action}</TableCell>
-                                                                    <TableCell align="center">{row.status}</TableCell>
-                                                                </TableRow>
-                                                            );
-                                                        })}
-                                                    {emptyRows > 0 && (
-                                                        <TableRow
-                                                            style={{
-                                                                height: (dense ? 33 : 53) * emptyRows,
-                                                            }}
-                                                        >
-                                                            <TableCell colSpan={6} />
-                                                        </TableRow>
-                                                    )}
-                                                </TableBody>
-                                            </Table>
-                                        </TableContainer>
-                                        <TablePagination
-                                            rowsPerPageOptions={[5, 10, 25]}
-                                            component="div"
-                                            count={rows.length}
-                                            rowsPerPage={rowsPerPage}
-                                            page={page}
-                                            onPageChange={handleChangePage}
-                                            onRowsPerPageChange={handleChangeRowsPerPage}
-                                        />
-                                    </Paper>
-                                </Box>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
+                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.employee_name}</TableCell>
+                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.email}</TableCell>
+                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.salary}</TableCell>
+                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.address}</TableCell>
+                                                <TableCell align="center">{row.action}</TableCell>
+                                                <TableCell align="center">{row.status}</TableCell>
+                                            </TableRow>
+                                        );
+                                    })}
+                                {emptyRows > 0 && (
+                                    <TableRow
+                                        style={{
+                                            height: (dense ? 33 : 53) * emptyRows,
+                                        }}
+                                    >
+                                        <TableCell colSpan={6} />
+                                    </TableRow>
+                                )}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    <TablePagination
+                        rowsPerPageOptions={[5, 10, 25]}
+                        component="div"
+                        count={rows.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                </Paper>
+            </Box>
         </>
     )
 }
 
-export default Employees;
+export default Client_Contact;

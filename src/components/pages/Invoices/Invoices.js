@@ -140,7 +140,7 @@ function EnhancedTableHead(props) {
                 {headCells.map((headCell) => (
                     <TableCell
                         key={headCell.id}
-                        align={headCell.numeric ? 'right' : 'left'}
+                        align={headCell.numeric ? 'center' : 'right'}
                         padding={headCell.disablePadding ? 'none' : 'normal'}
                         sortDirection={orderBy === headCell.id ? order : false}
                     >
@@ -236,7 +236,7 @@ const Invoices = () => {
     const [activeInactive, setActiveInactive] = React.useState(true)
 
     const rows = [
-        createData(1, '13/02/2023', '45', "Noida sector 59", "vishal", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(1, '13/02/2023', '45', "Noida sector 59", "vishal", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -245,7 +245,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(2, '14/02/2023', '46', "Noida sector 58", "shubham", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(2, '14/02/2023', '46', "Noida sector 58", "shubham", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -254,7 +254,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(3, '15/02/2023', '47', "Noida sector 57", "rajesh", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(3, '15/02/2023', '47', "Noida sector 57", "rajesh", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -263,7 +263,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(4, '16/02/2023', '48', "Noida sector 56", "vikash", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(4, '16/02/2023', '48', "Noida sector 56", "vikash", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -272,7 +272,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(5, '17/02/2023', '49', "Noida sector 55", "ankit", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(5, '17/02/2023', '49', "Noida sector 55", "ankit", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -281,7 +281,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(6, '18/02/2023', '50', "Noida sector 54", "vinod", <NavLink to="/invoice-detail"><VisibilityIcon class="text-center" /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(6, '18/02/2023', '50', "Noida sector 54", "vinod", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -290,7 +290,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(7, '19/02/2023', '51', "Noida sector 53", "atul", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(7, '19/02/2023', '51', "Noida sector 53", "atul", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -299,7 +299,7 @@ const Invoices = () => {
                 setActiveInactive(!activeInactive);
             }}
         />),
-        createData(8, '20/02/2023', '52', "Noida sector 52", "mukesh", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+        createData(8, '20/02/2023', '52', "Noida sector 52", "mukesh", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
             width={100}
             onlabel='Active'
             offlabel='Inactive'
@@ -403,6 +403,7 @@ const Invoices = () => {
                                                     />
                                                 </TableCell>
                                                 <TableCell
+                                                    align="center"
                                                     component="th"
                                                     id={labelId}
                                                     scope="row"

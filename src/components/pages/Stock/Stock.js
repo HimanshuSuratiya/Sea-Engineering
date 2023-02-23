@@ -22,13 +22,14 @@ import { visuallyHidden } from '@mui/utils';
 import EditIcon from '@mui/icons-material/Edit';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 
-function createData(serial_no, employee_name, email, salary, address, action, status) {
+function createData(serial_no, Equipment, Supplier, Equipment_quatity, place, contact, action, status) {
   return {
     serial_no,
-    employee_name,
-    email,
-    salary,
-    address,
+    Equipment,
+    Supplier,
+    Equipment_quatity,
+    contact,
+    place,
     action,
     status,
   };
@@ -70,28 +71,34 @@ const headCells = [
     label: 'S-No',
   },
   {
-    id: 'employee_name',
+    id: 'Equipment',
     numeric: true,
     disablePadding: false,
-    label: 'Employee-Name',
+    label: 'Equipment',
   },
   {
-    id: 'email',
+    id: 'Supplier',
     numeric: true,
     disablePadding: false,
-    label: 'Email',
+    label: 'Supplier',
   },
   {
-    id: 'salary',
+    id: 'Equipment_quatity',
     numeric: true,
     disablePadding: false,
-    label: 'Salary',
+    label: 'Equipment_quatity',
   },
   {
-    id: 'address',
+    id: 'contact',
     numeric: true,
     disablePadding: false,
-    label: 'Address',
+    label: 'Contact',
+  },
+  {
+    id: 'place',
+    numeric: true,
+    disablePadding: false,
+    label: 'place',
   },
   {
     id: 'action',
@@ -226,7 +233,7 @@ const Stock = () => {
   const [activeInactive, setActiveInactive] = React.useState(true)
 
   const rows = [
-    createData(1, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(1, 'Mouse', 'Vishal', 12, 'Delhi', '63976563', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -235,7 +242,7 @@ const Stock = () => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(2, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(2, 'Mouse', 'Vishal', 12, 'Delhi', '63976563', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -244,7 +251,7 @@ const Stock = () => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(3, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(3, 'Mouse', 'Vishal', 12, 'Delhi', '63976563', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -253,7 +260,7 @@ const Stock = () => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(4, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(4, 'Mouse', 'Vishal', 12, 'Delhi', '63976563', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -262,7 +269,7 @@ const Stock = () => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(5, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(5, 'Mouse', 'Vishal', 12, 'Delhi', '63976563', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -271,7 +278,7 @@ const Stock = () => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(6, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(6, 'Mouse', 'Vishal', 12, 'Delhi', '63976563', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -280,7 +287,7 @@ const Stock = () => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(7, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(7, 'Mouse', 'Vishal', 12, 'Delhi', '63976563', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -289,7 +296,7 @@ const Stock = () => {
         setActiveInactive(!activeInactive);
       }}
     />),
-    createData(8, 'varun Shukla', 'varun@gmail.com', 35000, 'Noida sector-59', <><EditIcon /> <DeleteIcon /></>, <BootstrapSwitchButton
+    createData(8, 'Mouse', 'Vishal', 12, 'Delhi', '63976563', <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
       width={100}
       onlabel='Active'
       offlabel='Inactive'
@@ -393,6 +400,7 @@ const Stock = () => {
                           />
                         </TableCell>
                         <TableCell
+                          align="center"
                           component="th"
                           id={labelId}
                           scope="row"
@@ -401,10 +409,11 @@ const Stock = () => {
                         >
                           {row.serial_no}
                         </TableCell>
-                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.employee_name}</TableCell>
-                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.email}</TableCell>
-                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.salary}</TableCell>
-                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.address}</TableCell>
+                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.Equipment}</TableCell>
+                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.Supplier}</TableCell>
+                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.Equipment_quatity}</TableCell>
+                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.place}</TableCell>
+                        <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.contact}</TableCell>
                         <TableCell align="center">{row.action}</TableCell>
                         <TableCell align="center">{row.status}</TableCell>
                       </TableRow>
