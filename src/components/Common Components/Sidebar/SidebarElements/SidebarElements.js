@@ -1,9 +1,5 @@
-import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import Contact from "../../../pages/Contacts/Contact";
-import ProjectsLayout from "../../../pages/Projects/ProjectsLayout";
-import ProjectsIndex from "../../../pages/Projects/ProjectsIndex";
 import Project from "../../../pages/Projects/Project"
-import ProjectProgress from "../../../pages/Projects/ProjectProgress"
 import Stock from "../../../pages/Stock/Stock";
 import Equipments from "../../../pages/Equipments/Equipments";
 import Dashboard from "../../../pages/Dashboard/Dashboard";
@@ -27,6 +23,10 @@ import ContactsIcon from '@mui/icons-material/Contacts';
 import Task from "../../../pages/Task/Task";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import Client_Contact from "../../../pages/Client_Contact/Client_Contact";
+import View_project from "../../../pages/View_project/View_project";
+import Add_member from "../../../pages/Add_member/Add_member";
+import TaskSummary from "../../../pages/TaskSummary/TaskSummary";
+
 const SidebarElements = [
   {
     index: true,
@@ -58,36 +58,60 @@ const SidebarElements = [
     state: "InvoiceDetails",
   },
   {
-    path: "/projects",
-    element: <ProjectsLayout />,
-    state: "projects",
+    path: "/view_project",
+    element: < View_project />,
+    state: "View_project",
+  },
+  // {
+  //   path: "/projects",
+  //   element: <ProjectsLayout />,
+  //   state: "projects",
+  //   sidebarProps: {
+  //     displayText: "  PROJECTS",
+  //     icon: <WorkspacePremiumIcon />
+  //   },
+  //   child: [
+  //     {
+  //       index: true,
+  //       element: <ProjectsIndex />,
+  //       state: "projects.index"
+  //     },
+  //     {
+  //       path: "/projects/all-project",
+  //       element: <Project />,
+  //       state: "projects.project",
+  //       sidebarProps: {
+  //         displayText: " ALL PROJECT"
+  //       }
+  //     },
+  //     {
+  //       path: "/projects/all-task",
+  //       element: <ProjectProgress />,
+  //       state: "projects.progress",
+  //       sidebarProps: {
+  //         displayText: "All TASKS"
+  //       }
+  //     },
+  //   ]
+  // },
+  {
+    path: "all-project",
+    element: <Project />,
+    state: "all project",
     sidebarProps: {
-      displayText: "PROJECTS",
+      displayText: "All Projects",
       icon: <WorkspacePremiumIcon />
-    },
-    child: [
-      {
-        index: true,
-        element: <ProjectsIndex />,
-        state: "projects.index"
-      },
-      {
-        path: "/projects/project",
-        element: <Project />,
-        state: "projects.project",
-        sidebarProps: {
-          displayText: "PROJECT"
-        }
-      },
-      {
-        path: "/projects/progress",
-        element: <ProjectProgress />,
-        state: "projects.progress",
-        sidebarProps: {
-          displayText: "PROJECT PROGRESS"
-        }
-      },
-    ]
+    }
+  },
+  {
+    path: "/add-member",
+    element: <Add_member />,
+    state: "add-member",
+  },
+  {
+    path: "/task-summary",
+    element: <TaskSummary />,
+    state: "task-summary",
   },
   {
     path: "/contacts",

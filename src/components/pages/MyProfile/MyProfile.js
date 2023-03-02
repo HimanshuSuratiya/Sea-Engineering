@@ -12,7 +12,7 @@ const MyProfile = () => {
                     <div class="col-md-5 border-right">
                         <div class="p-3 py-5">
                             <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h4 class="text-right "> My Profile </h4>
+                                <h4 class="text-right " style={{ color: '#188dc7' }}> My Profile </h4>
                             </div>
                             <div class="form-outline mb-4">
                                 <TextField fullWidth label="Name" id="fullWidth" autoComplete="off" />
@@ -35,7 +35,7 @@ const MyProfile = () => {
                     </div>
                     <div class="col-md-4">
                         <div class="p-3 py-5">
-                            <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br />
+                            <div class="d-flex justify-content-between align-items-center experience"><span style={{ color: '#188dc7' }} >Edit Experience</span><span class="border px-3 p-1 add-experience" ><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br />
                             <TextField id="outlined-basic" label="Experience " variant="outlined" /> <br />
                             <div class="col-md-12 mt-3"><TextField id="outlined-basic" label="Additional Details" variant="outlined" /></div>
                         </div>

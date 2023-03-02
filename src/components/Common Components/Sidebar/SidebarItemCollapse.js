@@ -15,7 +15,6 @@ import { useSelector } from "react-redux"
 
 const SidebarItemCollapse = ({ item }) => {
   const [open, setOpen] = useState(false)
-
   const { appState } = useSelector(state => state.appState)
 
   useEffect(() => {
@@ -38,7 +37,8 @@ const SidebarItemCollapse = ({ item }) => {
       >
         <ListItemIcon
           sx={{
-            color: colorConfigs.sidebar.color
+            color: colorConfigs.sidebar.color,
+            minWidth: '35px',
           }}
         >
           {item.sidebarProps.icon && item.sidebarProps.icon}
@@ -66,4 +66,4 @@ const SidebarItemCollapse = ({ item }) => {
   ) : null
 }
 
-export default SidebarItemCollapse
+export default SidebarItemCollapse;

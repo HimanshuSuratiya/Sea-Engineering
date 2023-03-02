@@ -1,4 +1,4 @@
-/* .project-main-line-graph-div {
+.project-main-line-graph-div {
     box-shadow: 5px 5px 5px 0px rgb(0 0 0 / 24%);
     border-radius: 12px;
 }
@@ -82,7 +82,7 @@
 }
 
 /* Project Progress */
-/* .project-progress-to-do {
+.project-progress-to-do {
     border-bottom: 5px solid #6f6f6f;
 }
 
@@ -146,4 +146,4 @@
     border-radius: 5px;
 }
 
-Project Progress  */
+/* Project Progress */

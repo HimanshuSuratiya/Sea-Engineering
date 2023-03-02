@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -23,6 +23,20 @@ import EditIcon from '@mui/icons-material/Edit';
 import BootstrapSwitchButton from 'bootstrap-switch-button-react';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { NavLink } from 'react-router-dom';
+import FilterAltIcon from '@mui/icons-material/FilterAlt';
+import AddIcon from '@mui/icons-material/Add';
+import Slide from '@mui/material/Slide';
+import Divider from '@mui/material/Divider';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import CloseIcon from '@mui/icons-material/Close';
+import { TextField } from '@mui/material';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+    return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function createData(serial_no, invoice_Date, invoice_no, address, client_name, ViewDetails, action, status) {
     return {
@@ -212,11 +226,14 @@ function EnhancedTableToolbar(props) {
                     </IconButton>
                 </Tooltip>
             ) : (
-                <Tooltip title="Filter list">
-                    <IconButton>
-                        <FilterListIcon />
-                    </IconButton>
-                </Tooltip>
+                <>
+                    <TextField
+                        label="Search"
+                        id="outlined-size-small"
+
+                        size="small"
+                    />
+                </>
             )}
         </Toolbar>
     );
@@ -234,6 +251,7 @@ const Invoices = () => {
     const [dense, setDense] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
     const [activeInactive, setActiveInactive] = React.useState(true)
+    const [addRequest, setAddRequest] = useState(false);
 
     const rows = [
         createData(1, '13/02/2023', '45', "Noida sector 59", "vishal", <NavLink to="/invoice-detail"><VisibilityIcon /></NavLink>, <><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>, <BootstrapSwitchButton
@@ -359,93 +377,153 @@ const Invoices = () => {
     const isSelected = (serial_no) => selected.indexOf(serial_no) !== -1;
     const emptyRows = page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
+    const addRequestOpen = () => {
+        setAddRequest(true);
+    };
+
+    const addRequestClose = () => {
+        setAddRequest(false);
+    };
+
     return (
         <>
-            <Box sx={{ width: '100%' }}>
-                <Paper sx={{ width: '100%', mb: 2 }}>
-                    <EnhancedTableToolbar numSelected={selected.length} />
-                    <TableContainer>
-                        <Table
-                            sx={{ minWidth: 750 }}
-                            aria-labelledby="tableTitle"
-                            size={dense ? 'small' : 'medium'}
-                        >
-                            <EnhancedTableHead
-                                numSelected={selected.length}
-                                order={order}
-                                orderBy={orderBy}
-                                onSelectAllClick={handleSelectAllClick}
-                                onRequestSort={handleRequestSort}
-                                rowCount={rows.length}
-                            />
-                            <TableBody>
-                                {stableSort(rows, getComparator(order, orderBy))
-                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                    .map((row, index) => {
-                                        const isItemSelected = isSelected(row.serial_no);
-                                        const labelId = `enhanced-table-checkbox-${index}`;
-                                        return (
-                                            <TableRow
-                                                hover
-                                                role="checkbox"
-                                                aria-checked={isItemSelected}
-                                                tabIndex={-1}
-                                                key={row.serial_no}
-                                                selected={isItemSelected}
-                                            >
-                                                <TableCell padding="checkbox" onClick={(event) => handleClick(event, row.serial_no)}>
-                                                    <Checkbox
-                                                        color="primary"
-                                                        checked={isItemSelected}
-                                                        inputProps={{
-                                                            'aria-labelledby': labelId,
-                                                        }}
-                                                    />
-                                                </TableCell>
-                                                <TableCell
-                                                    align="center"
-                                                    component="th"
-                                                    id={labelId}
-                                                    scope="row"
-                                                    padding="none"
-                                                    onClick={(event) => handleClick(event, row.serial_no)}
-                                                >
-                                                    {row.serial_no}
-                                                </TableCell>
-                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.invoice_Date}</TableCell>
-                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.invoice_no}</TableCell>
-                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.address}</TableCell>
-                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.client_name}</TableCell>
-
-                                                <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.ViewDetails}</TableCell>
-                                                <TableCell align="center">{row.action}</TableCell>
-                                                <TableCell align="center">{row.status}</TableCell>
-                                            </TableRow>
-                                        );
-                                    })}
-                                {emptyRows > 0 && (
-                                    <TableRow
-                                        style={{
-                                            height: (dense ? 33 : 53) * emptyRows,
+            <div className="container">
+                <div className="row">
+                    <div className="col-12">
+                        <h5 className='text-white bg-success py-3 px-3 rounded-5'>Select invoices Change to</h5>
+                    </div>
+                    <div className="col-12 text-end  my-3">
+                        <button className='ms-2 quotes-btn' onClick={addRequestOpen} style={{ fontSize: "13px" }}  ><AddIcon /> Add New</button>
+                        <button type="button" className='ms-2 quotes-btn' style={{ fontSize: "13px" }} ><FilterAltIcon />Filter </button>
+                        <div>
+                            <Dialog
+                                open={addRequest}
+                                TransitionComponent={Transition}
+                                keepMounted
+                                onClose={addRequestClose}
+                                aria-describedby="alert-dialog-slide-description"
+                            >
+                                <DialogTitle>
+                                    <div className='d-flex align-items-center justify-content-between'>
+                                        <p className='p-0 m-0'>New Request Quote Form</p>
+                                        <CloseIcon onClick={addRequestClose} style={{ cursor: 'pointer' }} />
+                                    </div>
+                                </DialogTitle>
+                                <Divider style={{ backgroundColor: 'gray' }} />
+                                <DialogContent>
+                                    <Box
+                                        sx={{
+                                            width: 500,
+                                            maxWidth: '100%',
                                         }}
                                     >
-                                        <TableCell colSpan={6} />
-                                    </TableRow>
-                                )}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                    <TablePagination
-                        rowsPerPageOptions={[5, 10, 25]}
-                        component="div"
-                        count={rows.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                    />
-                </Paper>
-            </Box>
+                                        <TextField fullWidth className='my-2' label="Name" />
+                                        <TextField fullWidth className='my-2' label="Email" />
+                                        <TextField fullWidth className='my-2' label="Phone" />
+                                        <TextField fullWidth className='my-2' label="Address" />
+                                    </Box>
+                                </DialogContent>
+                                <DialogActions>
+                                    <div className='px-3'>
+                                        <button className='quotes-dialog-btn me-2' onClick={addRequestClose}>Cancel</button>
+                                        <button className='quotes-dialog-btn' onClick={addRequestClose}>Save</button>
+                                    </div>
+                                </DialogActions>
+                            </Dialog>
+                        </div>
+                    </div>
+                    <div classname="container">
+                        <div className="row">
+                            <div className="col-12">
+                                <Box sx={{ width: '100%' }}>
+                                    <Paper sx={{ width: '100%', mb: 2 }}>
+                                        <EnhancedTableToolbar numSelected={selected.length} />
+                                        <TableContainer>
+                                            <Table
+                                                sx={{ minWidth: 750 }}
+                                                aria-labelledby="tableTitle"
+                                                size={dense ? 'small' : 'medium'}
+                                            >
+                                                <EnhancedTableHead
+                                                    numSelected={selected.length}
+                                                    order={order}
+                                                    orderBy={orderBy}
+                                                    onSelectAllClick={handleSelectAllClick}
+                                                    onRequestSort={handleRequestSort}
+                                                    rowCount={rows.length}
+                                                />
+                                                <TableBody>
+                                                    {stableSort(rows, getComparator(order, orderBy))
+                                                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                                        .map((row, index) => {
+                                                            const isItemSelected = isSelected(row.serial_no);
+                                                            const labelId = `enhanced-table-checkbox-${index}`;
+                                                            return (
+                                                                <TableRow
+                                                                    hover
+                                                                    role="checkbox"
+                                                                    aria-checked={isItemSelected}
+                                                                    tabIndex={-1}
+                                                                    key={row.serial_no}
+                                                                    selected={isItemSelected}
+                                                                >
+                                                                    <TableCell padding="checkbox" onClick={(event) => handleClick(event, row.serial_no)}>
+                                                                        <Checkbox
+                                                                            color="primary"
+                                                                            checked={isItemSelected}
+                                                                            inputProps={{
+                                                                                'aria-labelledby': labelId,
+                                                                            }}
+                                                                        />
+                                                                    </TableCell>
+                                                                    <TableCell
+                                                                        align="center"
+                                                                        component="th"
+                                                                        id={labelId}
+                                                                        scope="row"
+                                                                        padding="none"
+                                                                        onClick={(event) => handleClick(event, row.serial_no)}
+                                                                    >
+                                                                        {row.serial_no}
+                                                                    </TableCell>
+                                                                    <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.invoice_Date}</TableCell>
+                                                                    <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.invoice_no}</TableCell>
+                                                                    <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.address}</TableCell>
+                                                                    <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.client_name}</TableCell>
+                                                                    <TableCell align="center" onClick={(event) => handleClick(event, row.serial_no)}>{row.ViewDetails}</TableCell>
+                                                                    <TableCell align="center">{row.action}</TableCell>
+                                                                    <TableCell align="center">{row.status}</TableCell>
+                                                                </TableRow>
+                                                            );
+                                                        })}
+                                                    {emptyRows > 0 && (
+                                                        <TableRow
+                                                            style={{
+                                                                height: (dense ? 33 : 53) * emptyRows,
+                                                            }}
+                                                        >
+                                                            <TableCell colSpan={6} />
+                                                        </TableRow>
+                                                    )}
+                                                </TableBody>
+                                            </Table>
+                                        </TableContainer>
+                                        <TablePagination
+                                            rowsPerPageOptions={[5, 10, 25]}
+                                            component="div"
+                                            count={rows.length}
+                                            rowsPerPage={rowsPerPage}
+                                            page={page}
+                                            onPageChange={handleChangePage}
+                                            onRowsPerPageChange={handleChangeRowsPerPage}
+                                        />
+                                    </Paper>
+                                </Box>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

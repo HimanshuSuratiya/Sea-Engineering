@@ -126,12 +126,9 @@ const Quotes = () => {
                             'aria-labelledby': 'basic-button',
                         }}
                     >
-
                         <MenuItem onClick={handleCloseSelectOptions} >Profile</MenuItem>
                         <MenuItem onClick={handleCloseSelectOptions}>My account</MenuItem>
                         <MenuItem onClick={handleCloseSelectOptions}>Logout</MenuItem>
-
-
                     </Menu>
                 </div>
             </>

@@ -22,7 +22,8 @@ const SidebarItem = ({ item }) => {
     >
       <ListItemIcon
         sx={{
-          color: colorConfigs.sidebar.color
+          color: colorConfigs.sidebar.color,
+          minWidth: '35px'
         }}
       >
         {item.sidebarProps.icon && item.sidebarProps.icon}
@@ -32,4 +33,4 @@ const SidebarItem = ({ item }) => {
   ) : null
 }
 
-export default SidebarItem
+export default SidebarItem;

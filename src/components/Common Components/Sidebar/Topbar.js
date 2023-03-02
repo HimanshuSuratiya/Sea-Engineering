@@ -15,6 +15,8 @@ import Logout from '@mui/icons-material/Logout';
 import { NavLink } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import "../../Common Components/Topbar.css";
+import Divider from '@mui/material/Divider';
+
 const useStyles = makeStyles(() => ({
   myAccount: {
     color: '#188dc7',
@@ -39,8 +41,8 @@ const Topbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleLogin = () => {
 
+  const handleLogin = () => {
     setAnchorEl(null);
     localStorage.setItem('isLoginType', 0)
     window.location.reload()
@@ -57,73 +59,89 @@ const Topbar = () => {
         color: colorConfigs.topbar.color
       }}
     >
-      <Toolbar>
-        <div className="d-flex align-items-center justify-content-end w-100">
-          <div class="notification">
-            <a href="#">
-              <div class="notBtn" href="#">
-                <Badge badgeContent={2} color="error" className="notification-badge">
-                  <NotificationsActiveIcon className={`${classes.notificationStyle}`} />
-                </Badge>
-                <div class="box">
-                  <div class="display">
-                    <div class="cont">
-                      <div class="sec new">
-                        <a href="">
-                          <img class="profile" src="https://c1.staticflickr.com/5/4007/4626436851_5629a97f30_b.jpg" />
-                          <div class="txt">James liked your post: "Pure css notification box"</div>
-                          <div class="txt sub">11/7 - 2:30 pm</div>
-                        </a>
+      <div className="d-flex justify-content-end">
+        <Toolbar>
+          <div className="ms-2 d-flex justify-content-center align-items-center Notification-dropdown">
+            <div className="d-flex user-detail-main-area">
+              <div className="user-img-area">
+                <div className="font-awesome-size">
+                  <Badge badgeContent={2} color="error" className="notification-badge">
+                    <NotificationsActiveIcon style={{ fontSize: '28px', color: '#fff', cursor: 'pointer' }} />
+                  </Badge>
+                </div>
+                <div className="Notification-dropdown-content Notification-dropdown-massege-box-area">
+                  <div className="px-2 d-flex align-items-center justify-content-between">
+                    <h5 className="p-0 m-0">Notifications</h5>
+                    <button className="notification-clear-all-btn">Clear all</button>
+                  </div>
+                  <Divider className="my-2" style={{ backgroundColor: 'grey' }} />
+                  <div>
+                    <div>
+                      <div className="d-flex p-2 align-items-center justify-content-center">
+                        <div>
+                          <Avatar alt="Remy Sharp" src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Pat-headshot-square.jpg" />
+                        </div>
+                        <div className="px-2 w-100">
+                          <div className="d-flex justify-content-between">
+                            <h6 className="p-0 m-0"> vishal  patel</h6>
+                            <p className="p-0 m-0 notification-date"> 24 March 2023</p>
+                          </div>
+                          <div>
+                            <p className="p-0 m-0 main-notification-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                          </div>
+                        </div>
                       </div>
-                      <div class="sec new">
-                        <a href="">
-                          <img class="profile" src="https://obamawhitehouse.archives.gov/sites/obamawhitehouse.archives.gov/files/styles/person_medium_photo/public/person-photo/amanda_lucidon22.jpg?itok=JFPi8OFJ" />
-                          <div class="txt">Annita liked your post: "Pure css notification box"</div>
-                          <div class="txt sub">11/7 - 2:13 pm</div>
-                        </a>
+                      <Divider className="my-2" style={{
+                        backgroundColor: 'gray',
+                        height: ' 1px',
+                        opacity: '0.5'
+                      }} />
+                    </div>
+                    <div>
+                      <div className="d-flex p-2 align-items-center justify-content-center">
+                        <div>
+                          <Avatar alt="Remy Sharp" src="https://obamawhitehouse.archives.gov/sites/obamawhitehouse.archives.gov/files/styles/person_medium_photo/public/person-photo/amanda_lucidon22.jpg?itok=JFPi8OFJ" />
+                        </div>
+                        <div className="px-2 w-100">
+                          <div className="d-flex justify-content-between">
+                            <h6 className="p-0 m-0">Naveen Kumar</h6>
+                            <p className="p-0 m-0 notification-date">23 Nov 2022</p>
+                          </div>
+                          <div>
+                            <p className="p-0 m-0 main-notification-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                          </div>
+                        </div>
                       </div>
-
-                      <div class="sec">
-                        <a href="">
-                          <img class="profile" src="https://c1.staticflickr.com/4/3725/10214643804_75c0b6eeab_b.jpg" />
-                          <div class="txt">Madison liked your post: "Pure css notification box"</div>
-                          <div class="txt sub">11/6 - 4:04 pm</div>
-                        </a>
+                      <Divider style={{
+                        backgroundColor: 'gray',
+                        height: ' 1px',
+                        opacity: '0.5'
+                      }} />
+                    </div>
+                    <div>
+                      <div className="d-flex p-2 align-items-center justify-content-center">
+                        <div>
+                          <Avatar alt="Remy Sharp" src="https://c1.staticflickr.com/5/4007/4626436851_5629a97f30_b.jpg" />
+                        </div>
+                        <div className="px-2 w-100">
+                          <div className="d-flex justify-content-between">
+                            <h6 className="p-0 m-0">Himanshu Suratiya</h6>
+                            <p className="p-0 m-0 notification-date">15 Aug 2012</p>
+                          </div>
+                          <div>
+                            <p className="p-0 m-0 main-notification-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                          </div>
+                        </div>
                       </div>
-                      <div class="sec">
-                        <a href="">
-                          <img class="profile" src="https://upload.wikimedia.org/wikipedia/commons/5/52/NG_headshot_white_shirt_square_Jan18.jpg" />
-                          <div class="txt">Ted liked your post: "Pure css notification box"</div>
-                          <div class="txt sub">11/6 - 10:37 am</div>
-                        </a>
-                      </div>
-                      <div class="sec">
-                        <a href="">
-                          <img class="profile" src="https://upload.wikimedia.org/wikipedia/commons/d/dd/Pat-headshot-square.jpg" />
-                          <div class="txt">Tommas liked your post: "Pure css notification box"</div>
-                          <div class="txt sub">11/5 - 7:30 pm</div>
-                        </a>
-                      </div>
-
-                      <div class="sec">
-                        <a href="">
-                          <img class="profile" src="//c1.staticflickr.com/1/185/440890151_54c5b920b0_b.jpg" />
-                          <div class="txt">Jerimaiah liked your post: "Pure css notification box"</div>
-                          <div class="txt sub">11/5 - 1:34 pm</div>
-                        </a>
-                      </div>
-                      <div class="sec">
-                        <a href=" ">
-                          <img class="profile" src="//c2.staticflickr.com/4/3397/3585544855_28442029a5_z.jpg?zz=1" />
-                          <div class="txt">Debra liked your post: "Pure css notification box"</div>
-                          <div class="txt sub">11/5 - 10:20 am</div>
-                        </a>
-                      </div>
+                      <Divider className="my-2" style={{ backgroundColor: 'gray' }} />
                     </div>
                   </div>
+                  {/* <div className="px-2">
+                    <NavLink to="/notification"><button className="notification-view-all-notification-btn">View all Notification</button></NavLink>
+                  </div> */}
                 </div>
               </div>
-            </a>
+            </div>
           </div>
           <>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -195,9 +213,9 @@ const Topbar = () => {
               </NavLink>
             </Menu>
           </>
-        </div>
-      </Toolbar>
-    </AppBar>
+        </Toolbar>
+      </div >
+    </AppBar >
   )
 }
 
