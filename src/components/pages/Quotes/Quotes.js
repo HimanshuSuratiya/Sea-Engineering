@@ -17,6 +17,10 @@ import { TextField } from '@mui/material';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import axios from "axios";
+import EditIcon from '@mui/icons-material/Edit';
+import { useEffect } from 'react';
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -46,7 +50,19 @@ function CircularProgressWithLabel(props) {
     );
 }
 
+const defaultState = {
+    projectName: '',
+    address: '',
+    description: '',
+
+
+}
+
+
 const Quotes = () => {
+
+    const [stateData, setStateData] = useState(defaultState);
+    const [dataList, setDataList] = useState([]);
     const [state, setState] = useState({
         options: {
             chart: {
@@ -96,6 +112,80 @@ const Quotes = () => {
         setAddRequest(false);
     };
 
+    const quotesData = (event) => {
+        const { name, value } = event.target;
+        setStateData((prevState) => {
+            return {
+                ...prevState,
+                [name]: value,
+            }
+        })
+    }
+    const submitData = (e) => {
+        console.log("submit data");
+        e.preventDefault();
+        var bearerToken = localStorage.getItem("token");
+
+        axios.post("http://69.49.235.253:8069/api/quotes/", {
+            project_name: stateData.projectName,
+            address: stateData.address,
+            description: stateData.description
+
+        }, {
+            headers: { 'Authorization': "Bearer " + bearerToken }
+        }
+        )
+            .then((response) => {
+                console.log(response);
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
+    useEffect(() => {
+        var bearerToken = localStorage.getItem("token");
+
+        axios.get("http://69.49.235.253:8069/api/listquotes/", {
+
+            headers: { 'Authorization': "Bearer " + bearerToken }
+
+        }).then((response) => {
+
+            setDataList(response.data.data);
+
+
+        }).catch((error) => {
+            console.log(error);
+        });
+
+    }, [])
+
+
+    // useEffect(() => {
+
+    //     var bearerToken = localStorage.getItem("token");
+
+    //     axios.put("http://69.49.235.253:8069/api/updatequotes/2", {
+
+    //         headers: { 'Authorization': "Bearer " + bearerToken }
+
+    //     }).then((response) => {
+
+    //         console.log(response.data)
+
+
+    //     }).catch((error) => {
+
+    //         console.log(error);
+
+    //     });
+
+    // }, [])
+
+
+
     const handleDropDownOptions = () => {
         return (
             <>
@@ -133,6 +223,13 @@ const Quotes = () => {
                 </div>
             </>
         )
+    }
+
+    const selectUser = (id) => {
+        console.log(">>>>>>>>>>>>>>>>>>>>>" + dataList[id])
+
+        setAddRequest(true);
+
     }
 
     return (
@@ -212,76 +309,42 @@ const Quotes = () => {
                                     <div className='d-flex'>
                                         <button className='me-2 quotes-btn'>View all</button>
                                         <button className='ms-2 quotes-btn' onClick={addRequestOpen}><AddIcon /> Add New</button>
-                                        <div>
-                                            <Dialog
-                                                open={addRequest}
-                                                TransitionComponent={Transition}
-                                                keepMounted
-                                                onClose={addRequestClose}
-                                                aria-describedby="alert-dialog-slide-description"
-                                            >
-                                                <DialogTitle>
-                                                    <div className='d-flex align-items-center justify-content-between'>
-                                                        <p className='p-0 m-0'>New Request Quote Form</p>
-                                                        <CloseIcon onClick={addRequestClose} style={{ cursor: 'pointer' }} />
-                                                    </div>
-                                                </DialogTitle>
-                                                <Divider style={{ backgroundColor: 'gray' }} />
-                                                <DialogContent>
-                                                    <Box
-                                                        sx={{
-                                                            width: 500,
-                                                            maxWidth: '100%',
-                                                        }}
-                                                    >
-                                                        <TextField fullWidth className='my-2' label="Name" />
-                                                        <TextField fullWidth className='my-2' label="Email" />
-                                                        <TextField fullWidth className='my-2' label="Phone" />
-                                                        <TextField fullWidth className='my-2' label="Description" />
-                                                    </Box>
-                                                </DialogContent>
-                                                <DialogActions>
-                                                    <div className='px-3'>
-                                                        <button className='quotes-dialog-btn me-2' onClick={addRequestClose}>Cancel</button>
-                                                        <button className='quotes-dialog-btn' onClick={addRequestClose}>Submit</button>
-                                                    </div>
-                                                </DialogActions>
-                                            </Dialog>
-                                        </div>
+
                                     </div>
                                 </div>
                                 <div>
                                     <table className='w-100'>
+
                                         <tr>
-                                            <th>Label</th>
-                                            <th>Client</th>
-                                            <th>Status</th>
-                                            <th></th>
+                                            <th>Id</th>
+                                            <th>Project Name</th>
+                                            <th>Description</th>
+                                            <th>Address</th>
+                                            <th>Operations</th>
+
                                         </tr>
-                                        <tr>
-                                            <td>Lorem ipsum</td>
-                                            <td>MCM</td>
-                                            <td>New</td>
-                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lorem ipsum</td>
-                                            <td>Taziast</td>
-                                            <td>Treated</td>
-                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lorem ipsum</td>
-                                            <td>BP</td>
-                                            <td>Treated</td>
-                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lorem ipsum</td>
-                                            <td>Helen Bennett</td>
-                                            <td>New</td>
-                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
-                                        </tr>
+
+                                        {
+
+                                            dataList.map(item => {
+                                                const { id, project_name, description, address } = item;
+                                                return (
+                                                    <tr key={id}>
+                                                        <td>{id}</td>
+                                                        <td>{project_name}</td>
+                                                        <td>{description}</td>
+                                                        <td>{address}</td>
+                                                        <td><EditIcon onClick={() => selectUser(item.id)} /></td>
+
+                                                    </tr>
+                                                )
+
+
+
+                                            })
+
+                                        }
+
                                     </table>
                                 </div>
                             </div>
@@ -296,42 +359,82 @@ const Quotes = () => {
                                 </div>
                                 <div>
                                     <table className='w-100'>
+
                                         <tr>
-                                            <th>Label</th>
-                                            <th>Client</th>
-                                            <th>Status</th>
-                                            <th></th>
+                                            <th>Id</th>
+                                            <th>Project Name</th>
+                                            <th>Description</th>
+                                            <th>Address</th>
+
                                         </tr>
-                                        <tr>
-                                            <td>Lorem ipsum</td>
-                                            <td>MCM</td>
-                                            <td>New</td>
-                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lorem ipsum</td>
-                                            <td>Taziast</td>
-                                            <td>Treated</td>
-                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lorem ipsum</td>
-                                            <td>BP</td>
-                                            <td>Treated</td>
-                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Lorem ipsum</td>
-                                            <td>Helen Bennett</td>
-                                            <td>New</td>
-                                            <td className="quotes-three-dot-icon">{handleDropDownOptions()}</td>
-                                        </tr>
+
+                                        {
+
+                                            dataList.map(item => {
+                                                const { id, project_name, description, address } = item;
+                                                return (
+                                                    <tr key={id}>
+                                                        <td>{id}</td>
+                                                        <td>{project_name}</td>
+                                                        <td>{description}</td>
+                                                        <td>{address}</td>
+
+                                                    </tr>
+                                                )
+
+
+
+                                            })
+
+                                        }
+
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+            </div>
+            <div>
+                <Dialog
+                    open={addRequest}
+                    TransitionComponent={Transition}
+                    keepMounted
+                    onClose={addRequestClose}
+                    aria-describedby="alert-dialog-slide-description"
+                >
+                    <form onSubmit={submitData}>
+                        <DialogTitle>
+                            <div className='d-flex align-items-center justify-content-between'>
+
+                                <p className='p-0 m-0'>New Request Quote Form</p>
+                                <CloseIcon onClick={addRequestClose} style={{ cursor: 'pointer' }} />
+                            </div>
+                        </DialogTitle>
+                        <Divider style={{ backgroundColor: 'gray' }} />
+                        <DialogContent>
+                            <Box
+                                sx={{
+                                    width: 500,
+                                    maxWidth: '100%',
+                                }}
+                            >
+                                <TextField fullWidth className='my-2' label="Project Name" name="projectName" value={stateData.projectName} onChange={quotesData} />
+                                <TextField fullWidth className='my-2' label="Address" name="address" value={stateData.address} onChange={quotesData} />
+                                <textarea rows="3" class="form-control form-control-alternative pt-2" name="description" value={stateData.description} onChange={quotesData} placeholder="Description"></textarea>
+                            </Box>
+
+                        </DialogContent>
+                        <DialogActions>
+                            <div className='px-3'>
+                                <button className='quotes-dialog-btn me-2' onClick={addRequestClose}>Cancel</button>
+                                <button type="submit" className='quotes-dialog-btn'>Send</button>
+                            </div>
+                        </DialogActions>
+                    </form>
+                </Dialog>
             </div>
         </>
     )

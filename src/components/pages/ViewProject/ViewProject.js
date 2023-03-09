@@ -1,5 +1,5 @@
 import React from "react";
-import "./View_project.css";
+import "./ViewProject.css";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
@@ -59,9 +59,10 @@ function a11yProps(index) {
     };
 }
 
-const View_project = props => {
+const ViewProject = props => {
 
-    const [selectedValue, setSelectedValue] = React.useState('a');
+    const [radioButton, setRadioButton] = useState(true);
+    const [edit, setEdit] = React.useState(false);
     const [age, setAge] = React.useState('');
     const [valueTask, setValueTask] = React.useState(null);
     const [addRequest, setAddRequest] = useState(false);
@@ -125,9 +126,18 @@ const View_project = props => {
     };
     const handleChangeAddTAsk = (event) => {
         setAge(event.target.value);
+        setRadioButton(false);
     };
-    const handleChangeRadio = (event) => {
-        setSelectedValue(event.target.value);
+    const handleChangeRadio = () => {
+        setRadioButton(!radioButton);
+    };
+
+    const handleClickEditTask = () => {
+        setEdit(true);
+    };
+
+    const handleCloseEditTask = () => {
+        setEdit(false);
     };
 
     return (<>
@@ -157,21 +167,18 @@ const View_project = props => {
                                         >
                                             <DialogTitle>
                                                 <div className='d-flex align-items-center justify-content-between'>
-
                                                     <div>
                                                         <label>New Member</label>
                                                         <Radio
-                                                            checked={selectedValue === 'a'}
+                                                            checked={radioButton}
                                                             onChange={handleChangeRadio}
-                                                            value="a"
                                                             name="radio-buttons"
                                                             inputProps={{ 'aria-label': 'A' }}
                                                         />
                                                         <label>existing</label>
                                                         <Radio
-                                                            checked={selectedValue === 'b'}
+                                                            checked={!radioButton}
                                                             onChange={handleChangeRadio}
-                                                            value="b"
                                                             name="radio-buttons"
                                                             inputProps={{ 'aria-label': 'B' }}
                                                         />
@@ -187,11 +194,30 @@ const View_project = props => {
                                                         maxWidth: '100%',
                                                     }}
                                                 >
-                                                    <TextField fullWidth className='my-2' label="First Name" />
-                                                    <TextField fullWidth className='my-2' label="Last Name" />
-                                                    <TextField fullWidth className='my-2' label="Email" />
-                                                    <TextField fullWidth className='my-2' label="Contact Number" variant='outlined' type="number" />
-                                                    <TextField fullWidth className='my-2' type="file" />
+                                                    {radioButton ? <> <TextField fullWidth className='my-2' label="First Name" />
+                                                        <TextField fullWidth className='my-2' label="Last Name" />
+                                                        <TextField fullWidth className='my-2' label="Email" />
+                                                        <TextField fullWidth className='my-2' label="Contact Number" variant='outlined' type="number" />
+                                                        <TextField fullWidth className='my-2' type="file" /></> : <> <Box sx={{ minWidth: 120 }}>
+                                                            <FormControl fullWidth>
+                                                                <InputLabel id="demo-simple-select-label" size='normal'  >Member</InputLabel>
+                                                                <Select
+                                                                    labelId="demo-simple-select-label"
+                                                                    id="demo-simple-select"
+                                                                    value={age}
+                                                                    label="Member"
+                                                                    onChange={handleChangeAddTAsk}
+                                                                >
+                                                                    <MenuItem value={10}>Vishal</MenuItem>
+                                                                    <MenuItem value={20}>vikash</MenuItem>
+                                                                    <MenuItem value={30}>Aman</MenuItem>
+                                                                    <MenuItem value={40}>Shubham</MenuItem>
+                                                                    <MenuItem value={50}>Rahul</MenuItem>
+                                                                </Select>
+                                                            </FormControl>
+                                                        </Box>
+
+                                                    </>}
                                                 </Box>
                                             </DialogContent>
                                             <DialogActions>
@@ -247,7 +273,6 @@ const View_project = props => {
                                                         </FormControl>
                                                     </Box>
                                                     <TextField fullWidth className='my-2' label="Title " />
-
                                                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                                                         <DatePicker
                                                             className="w-100 py-1"
@@ -303,7 +328,6 @@ const View_project = props => {
                 </div>
             </div>
         </div>
-
         <div className='container'><div className=''>
             <Box sx={{ width: '100%' }}>
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -327,7 +351,7 @@ const View_project = props => {
                         <div className='row'>
                             <div className='col-lg-5 px-3'>
                                 <div className='project-main-line-graph-div'>
-                                    <div className='d-flex align-items-center justify-content-between p-2'>
+                                    <div className='d-flex align-items-center justify-content-between '>
                                         <h5 className='project-fabric-heading p-0 m-0'>Task Summary</h5>
                                         <button className='project-btn'><NavLink to="/task-summary" className="text-white text-decoration-none" >View all</NavLink></button>
                                     </div>
@@ -363,8 +387,8 @@ const View_project = props => {
                                                 />
                                             </div>
                                         </div>
-                                        <div>
-                                            <table className='w-100'>
+                                        <div >
+                                            <table className='w-100 '>
                                                 <tr>
                                                     <th>Serial No</th>
                                                     <th>Task Name</th>
@@ -374,7 +398,7 @@ const View_project = props => {
                                                     <th>Delete</th>
                                                 </tr>
                                                 <tr>
-                                                    <td>1</td>
+                                                    <td >1</td>
                                                     <td>Todo</td>
                                                     <td>you have devlop this project</td>
                                                     <td>01/03/2023</td>
@@ -441,31 +465,31 @@ const View_project = props => {
                                                 <tr>
                                                     <td>1</td>
                                                     <td>Vishal</td>
-                                                    <td> <Avatar alt="Remy Sharp" src="https://mui.com/static/images/avatar/5.jpg" /></td>
+                                                    <td> <img src="https://mui.com/static/images/avatar/5.jpg" alt="Avatar" className="listImages" /></td>
 
                                                     <td>15</td>
-                                                    <td><><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></></td>
+                                                    <td><><EditIcon onClick={handleClickEditTask} /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></></td>
                                                 </tr>
                                                 <tr>
                                                     <td>2</td>
                                                     <td>Lorem</td>
-                                                    <td>  <Avatar alt="Travis Howard" src="https://mui.com/static/images/avatar/4.jpg" /></td>
+                                                    <td> <img src="https://mui.com/static/images/avatar/2.jpg" alt="Avatar" className="listImages" /></td>
                                                     <td>20</td>
-                                                    <td><><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></></td>
+                                                    <td><><EditIcon onClick={handleClickEditTask} /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></></td>
                                                 </tr>
                                                 <tr>
                                                     <td>3</td>
                                                     <td>Shubham</td>
-                                                    <td> <Avatar alt="Agnes Walker" src="https://mui.com/static/images/avatar/2.jpg" /></td>
+                                                    <td> <img src="https://mui.com/static/images/avatar/5.jpg" alt="Avatar" className="listImages" /></td>
                                                     <td>25</td>
-                                                    <td><><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></></td>
+                                                    <td><><EditIcon onClick={handleClickEditTask} /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></></td>
                                                 </tr>
                                                 <tr>
                                                     <td>4</td>
                                                     <td>akash</td>
-                                                    <td>  <Avatar alt="Trevor Henderson" src="https://mui.com/static/images/avatar/5.jpg" /></td>
+                                                    <td> <img src="https://mui.com/static/images/avatar/2.jpg" alt="Avatar" className="listImages" /></td>
                                                     <td>30</td>
-                                                    <td><><EditIcon /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></></td>
+                                                    <td><><EditIcon onClick={handleClickEditTask} /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></></td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -473,6 +497,41 @@ const View_project = props => {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <Dialog
+                            open={edit}
+                            TransitionComponent={Transition}
+                            keepMounted
+                            onClose={handleClickEditTask}
+                            aria-describedby="alert-dialog-slide-description"
+                        >
+                            <DialogTitle>
+                                <div className='d-flex align-items-center justify-content-between'>
+                                    <p className='p-0 m-0'>Edit Members List </p>
+                                    <CloseIcon onClick={handleCloseEditTask} style={{ cursor: 'pointer' }} />
+                                </div>
+                            </DialogTitle>
+                            <Divider style={{ backgroundColor: 'gray' }} />
+                            <DialogContent>
+                                <Box
+                                    sx={{
+                                        width: 500,
+                                        maxWidth: '100%',
+                                    }}
+                                >
+                                    <TextField fullWidth className='mb-2' label="member Name" size='normal' />
+                                    <TextField fullWidth className='my-2' label="no.of Task" variant='outlined' type="number" />
+                                    <TextField fullWidth className='my-2' type="file" />
+                                </Box>
+                            </DialogContent>
+                            <DialogActions>
+                                <div className='px-3'>
+                                    <button className='quotes-dialog-btn me-2' onClick={handleCloseEditTask}>Cancel</button>
+                                    <button className='quotes-dialog-btn' onClick={handleCloseEditTask}>Save</button>
+                                </div>
+                            </DialogActions>
+                        </Dialog>
                     </div>
                 </TabPanel>
                 <TabPanel value={value} index={3}>
@@ -487,4 +546,4 @@ const View_project = props => {
     </>)
 }
 
-export default View_project;
+export default ViewProject;

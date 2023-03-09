@@ -147,3 +147,7 @@
 }
 
 /* Project Progress */
+.listImages {
+    width: 30px;
+    border-radius: 50%;
+}

@@ -89,8 +89,6 @@
 //               <div className='d-flex justify-content-between'>
 //                 <div className='py-3 project-top-left-div'>
 //                   <div>
-//                     <div className='d-flex justify-content-between'>
-//                       <h5 className='project-fabric-heading'>Fabrication and Supply of Tanks- Type A</h5>
 //                       <p className='m-0 project-on-progress-btn'>On progress</p>
 //                     </div>
 //                     <p className='p-0 mt-2 mb-0'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </p>
@@ -242,6 +240,7 @@ import Select from '@mui/material/Select';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import './AllProject.css';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -295,7 +294,7 @@ const headCells = [
     label: ' Client',
   },
   {
-    id: 'Due_Date',
+    id: 'Due Date',
     numeric: true,
     disablePadding: false,
     label: 'Due Date',
@@ -326,7 +325,7 @@ const headCells = [
     label: 'Action',
   },
   {
-    id: 'Active_Inactive',
+    id: 'Active Inactive',
     numeric: true,
     disablePadding: false,
     label: 'Active/Inactive',
@@ -446,7 +445,7 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-const Project = () => {
+const AllProject = () => {
   const [order, setOrder] = React.useState('asc');
   const [orderBy, setOrderBy] = React.useState('calories');
   const [selected, setSelected] = React.useState([]);
@@ -493,7 +492,7 @@ const Project = () => {
       Due_Date: '26/02/2023',
       Task: 30,
       Status: 'On Hold',
-      View: <NavLink to="/view_project"><VisibilityIcon /></NavLink>,
+      View: <NavLink to="/view-project"><VisibilityIcon /></NavLink>,
       Action: <><EditIcon onClick={handleClickEdit} /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>,
       Active_Inactive: <BootstrapSwitchButton
         width={100}
@@ -512,7 +511,7 @@ const Project = () => {
       Due_Date: '26/02/2023-2',
       Task: 30,
       Status: 'Completed',
-      View: <NavLink to="/view_project"><VisibilityIcon /></NavLink>,
+      View: <NavLink to="/view-project"><VisibilityIcon /></NavLink>,
       Action: <><EditIcon onClick={handleClickEdit} /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>,
       Active_Inactive: <BootstrapSwitchButton
         width={100}
@@ -531,7 +530,7 @@ const Project = () => {
       Due_Date: '26/02/2023-3',
       Task: 30,
       Status: 'Cancelled',
-      View: <NavLink to="/view_project"><VisibilityIcon /></NavLink>,
+      View: <NavLink to="/view-project"><VisibilityIcon /></NavLink>,
       Action: <><EditIcon onClick={handleClickEdit} /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>,
       Active_Inactive: <BootstrapSwitchButton
         width={100}
@@ -550,7 +549,7 @@ const Project = () => {
       Due_Date: '26/02/2023-4',
       Task: 30,
       Status: 'In Progress',
-      View: <NavLink to="/view_project"><VisibilityIcon /></NavLink>,
+      View: <NavLink to="/view-project"><VisibilityIcon /></NavLink>,
       Action: <><EditIcon onClick={handleClickEdit} /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>,
       Active_Inactive: <BootstrapSwitchButton
         width={100}
@@ -569,7 +568,7 @@ const Project = () => {
       Due_Date: '26/02/2023-5',
       Task: 30,
       Status: 'In Progress',
-      View: <NavLink to="/view_project"><VisibilityIcon /></NavLink>,
+      View: <NavLink to="/view-project"><VisibilityIcon /></NavLink>,
       Action: <><EditIcon onClick={handleClickEdit} /> <DeleteIcon onClick={() => alert("Are you sure you want to delete?")} /></>,
       Active_Inactive: <BootstrapSwitchButton
         width={100}
@@ -666,7 +665,7 @@ const Project = () => {
                 </FormControl>
               </div>
               <div>
-                <button className='ms-2 quotes-btn' onClick={addRequestOpen} style={{ fontSize: "13px" }}  ><AddIcon /> Add New</button>
+                <button className='ms-2 addNew-btn' onClick={addRequestOpen} style={{ fontSize: "13px" }}  ><AddIcon /> Add New</button>
               </div>
             </div>
             <div>
@@ -880,4 +879,4 @@ const Project = () => {
   )
 }
 
-export default Project;
+export default AllProject;

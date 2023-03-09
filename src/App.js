@@ -7,19 +7,19 @@ import ForgetPassword from "./components/pages/Forget Password/ForgetPassword";
 import Register from "./components/pages/Register/Register";
 
 function App() {
-  useEffect(() => {
-    const LoginData = { email: 'himanshu@gmail.com', password: '12345@' }
-    if (localStorage.getItem('isLoginType') === null) {
-      localStorage.setItem('isLoginType', 0)
-    } else {
-      if (localStorage.getItem('isLoginType') === 0) {
-        localStorage.setItem('isLoginType', 0)
-      } else if (localStorage.getItem('isLoginType') === 1) {
-        localStorage.setItem('isLoginType', 1)
-      }
-    }
-    localStorage.setItem('LoginData', JSON.stringify(LoginData));
-  }, [])
+  // useEffect(() => {
+  //   const LoginData = { email: 'himanshu@gmail.com', password: '12345@' }
+  //   if (localStorage.getItem('isLoginType') === null) {
+  //     localStorage.setItem('isLoginType', 0)
+  //   } else {
+  //     if (localStorage.getItem('isLoginType') === 0) {
+  //       localStorage.setItem('isLoginType', 0)
+  //     } else if (localStorage.getItem('isLoginType') === 1) {
+  //       localStorage.setItem('isLoginType', 1)
+  //     }
+  //   }
+  //   localStorage.setItem('LoginData', JSON.stringify(LoginData));
+  // }, [])
 
   return (
     <BrowserRouter basename="/design_website/See-engineering">

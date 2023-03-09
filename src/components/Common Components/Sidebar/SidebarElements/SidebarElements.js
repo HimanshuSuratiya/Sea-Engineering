@@ -1,5 +1,4 @@
 import Contact from "../../../pages/Contacts/Contact";
-import Project from "../../../pages/Projects/Project"
 import Stock from "../../../pages/Stock/Stock";
 import Equipments from "../../../pages/Equipments/Equipments";
 import Dashboard from "../../../pages/Dashboard/Dashboard";
@@ -23,9 +22,11 @@ import ContactsIcon from '@mui/icons-material/Contacts';
 import Task from "../../../pages/Task/Task";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import Client_Contact from "../../../pages/Client_Contact/Client_Contact";
-import View_project from "../../../pages/View_project/View_project";
+import View_project from "../../../pages/ViewProject/ViewProject";
 import Add_member from "../../../pages/Add_member/Add_member";
 import TaskSummary from "../../../pages/TaskSummary/TaskSummary";
+import AllProject from "../../../pages/Projects/AllProject";
+import ViewProject from "../../../pages/ViewProject/ViewProject";
 
 const SidebarElements = [
   {
@@ -58,9 +59,9 @@ const SidebarElements = [
     state: "InvoiceDetails",
   },
   {
-    path: "/view_project",
-    element: < View_project />,
-    state: "View_project",
+    path: "/view-project",
+    element: < ViewProject />,
+    state: "ViewProject",
   },
   // {
   //   path: "/projects",
@@ -96,7 +97,7 @@ const SidebarElements = [
   // },
   {
     path: "all-project",
-    element: <Project />,
+    element: <AllProject />,
     state: "all project",
     sidebarProps: {
       displayText: "All Projects",
@@ -127,7 +128,7 @@ const SidebarElements = [
     element: <Stock />,
     state: "stock",
     sidebarProps: {
-      displayText: "STOCK",
+      displayText: "STOCKS",
       icon: <ShowChartIcon />
     }
   },
